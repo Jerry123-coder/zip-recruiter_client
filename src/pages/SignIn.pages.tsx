@@ -99,7 +99,7 @@ const Signin = () => {
 
             <span style={{color: "red"}}>{error}</span>
 
-            <button type="submit" className="FormButton">
+            <button type="submit" className="FormButton" onClick={() => {navigate('/applicant/home')}}>
               sign in
             </button>
           </form>

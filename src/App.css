@@ -1,5 +1,16 @@
 
+:root {
+  --primary: #b2e522;
+  --secondary: #080a7a;
+  --tertiary: #343e45;
+  --border: #b0b2b3;
 
+
+  --light: #EEE;
+  --light-alt:rgb(179, 221, 248);
+  --dark: #131A26;
+  --dark-alt: #202B3E;
+}
 .App {
   text-align: center;
 }
@@ -43,25 +54,85 @@
   /* margin: 10vh 0 0 0; */
   margin-bottom: 5vh;
 }
+
+
 /*////// NAVBAR ///////*/
 
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15vw;
+}
+
+.nav-logo {
+  width: 180px;
+  height: 35px;
+  margin: 10px;
+}
 ul {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  margin-right:5vw; 
+  align-items: center;
+  /* margin-right:5vw;  */
   gap: 1.5em;
-  text-decoration: none;
-  list-style: none;
+  /* text-decoration: none; */
+  /* list-style: none; */
 }
 
 li {
+  color: var(--primary);
   text-decoration: none;
+  list-style: none;
+  padding: 4px;
+  color: var(---tertiary);
+  font-weight: 400;
+  cursor: pointer;
+  transition:ease-in-out 0.2s;
+}
+li:link {
+  color: var(--primary);
+  text-decoration: none;
+  list-style: none;
+  transition:ease-in 0.2s;
+}
+
+li:hover {
+  font-weight: 700;
+  padding: 2px;
+  color: var(--tertiary);
+  /* border-bottom: solid 2px var(--tertiary) ; */
 }
 
 li:active {
   font-weight: 700;
+  color: var(--tertiary);
+  /* border-bottom: solid 2px var(--tertiary) ; */
 }
+
+.applicantProfile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: var(--tertiary);
+  border: solid 2px var(--primary);
+  border-radius: 50px;
+
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: ease-in-out 0.5s;
+}
+
+.applicantProfile:hover {
+  color: var(---tertiary);
+  background-color: var(--primary);
+  border: solid 2px var(--border);
+  border-radius: 50px;
+}
+
 
 
 /*///// SIGNIN /////*/
@@ -87,7 +158,6 @@ li:active {
   position: absolute;
   bottom: 45vh;
   right: -70px;
-  bottom:
 }
 
 .recruiterApplicant {
@@ -216,7 +286,7 @@ li:active {
 
 
 .FormButton {
-  width: 30%;
+  width: 200px;
   border:none;
   background-color: #b2e522;
   color:#343e45;
@@ -225,7 +295,7 @@ li:active {
   font-weight: 700;
   cursor: pointer;
   padding: 10px 0 10px 0;
-  transition: ease 0.4s;
+  transition: ease-in-out 0.5s;
 }
 
 .FormButton:hover {
@@ -267,7 +337,7 @@ li:active {
     font-weight: 700;
     cursor: pointer;
     padding: 10px 0 10px 0;
-    transition: ease 0.4s;
+    transition: ease-in-out 0.5s;
   }
 
   .signupButton:hover {
@@ -291,10 +361,377 @@ li:active {
   
  
 
+/*///// SIGNUP (RECRUITER) /////*/
 
-
-
+.recruiter {
+  position: absolute;
+  bottom:1px;
+  left: 1px;
+  width:33vw;
+}
   
-  
+.formTitle {
+  text-align: left;
+  font-size:2.5em;
+}
 
-  
+.recruiterForm {
+  margin-bottom: 4vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+  align-items: flex-start;
+
+  margin-top: 10vh;
+}
+
+
+/*///// SIGNUP (APPLICANT) /////*/
+.applicantFormTitle {
+  text-align: left;
+  font-size:2.3em;
+}
+
+
+
+
+
+
+/*//////  APPLICANT HOME PAGE //////*/
+
+
+
+.pageContainer {
+  position: relative;
+  width: 100vw;
+  overflow: hidden;
+  /* padding: 0 10vw; */
+}
+
+.searchSection {
+  /* position: absolute; */
+  padding: 0 15vw;
+  height: 30vh;
+  width: 100vw;
+  background-color: var(--secondary);
+
+  justify-content: left;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 6px 6px 12px rgba(27, 27, 27, 0.7);
+}
+
+.searchSection h1 {
+  color: white;
+  text-align: left;
+  font-size: 3em;
+  margin-top: 80px;;
+}
+
+.searchInputs {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  width: 80vw;
+
+}
+
+.jobSearch {
+  position: relative;
+  display: flex;
+  /* width: 100%; */
+  margin:20px 0;
+  border-radius: 50px;
+}
+
+.jobLocationSearch {
+  position: relative;
+  /* display: flex; */
+  /* align-items: center; */
+  /* width: 100%; */
+  /* padding:20px 0; */
+}
+
+.jobSearch label {
+  position: absolute;
+  top: 19px;
+  left: 20px;
+  transform: translateY(-50%);
+  font-size: 1em;
+  font-weight: 400;
+  color: #b0b2b3;
+  pointer-events: none;
+  transition: ease-in-out 0.3s;
+}
+
+.jobSearch .icon {
+  position: absolute;
+  left: 15px;
+  bottom: -20px;
+  color: #888d8f;
+  font-size: large;
+  line-height: 75px;;
+}
+
+.jobSearch input {
+  border-radius: 50px;
+  outline: none;
+  font-size: large;
+  color: var(--tertiary);
+  max-width: 600px;
+  padding-left: 40px;
+}
+
+.jobSearch input:focus,
+.jobSearch input:valid {
+  border-color:#b2e522;
+} 
+
+.jobSearch input:hover + label,
+.jobSearch input:focus + label,
+.jobSearch input:valid + label {
+  color:black;
+  opacity:0;
+  /* top: -4px; */
+  font-weight: 400;
+  /* background-color: white; */
+  padding: 2px;
+  margin-left: 15px;
+}
+
+.jobLocationSearch label {
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  transform: translateY(-50%);
+  font-size: 1em;
+  font-weight: 400;
+  color: #b0b2b3;
+  pointer-events: none;
+  transition: ease-in-out 0.3s;
+}
+
+.jobLocationSearch .icon {
+  position: absolute;
+  left: 10px;
+  bottom: -20px;
+  color: #888d8f;
+  font-size: x-large;
+  line-height: 75px;;
+}
+
+
+.jobLocationSearch input {
+  border-radius: 50px;
+  outline: none;
+  font-size: large;
+  color: var(--tertiary);
+  max-width: 400px;
+  padding-left: 40px;
+}
+
+.jobLocationSearch input:focus,
+.jobLocationSearch input:valid {
+  border-color:#b2e522;
+} 
+
+.jobLocationSearch input:hover + label,
+.jobLocationSearch input:focus + label,
+.jobLocationSearch input:valid + label {
+  color:black;
+  opacity:0;
+  /* top: -4px; */
+  font-weight: 400;
+  /* background-color: white; */
+  padding: 2px;
+  margin-left: 15px;
+}
+
+.searchButton {
+  /* right: 20px;
+  top: -20px; */
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-weight: 700;
+  color: var(--tertiary);
+  background-color: var(--primary);
+  padding:5px;
+  width: 100px;
+  height: 30px;
+  border-radius: 50px;
+  cursor:pointer;
+  transition: ease-in 0.3s;
+  box-shadow: 3px 3px 7px rgba(27, 27, 27, 0.5);
+}
+
+.searchButton:hover {
+  color: var(--tertiary);
+  background-color: var(--light-alt);
+  padding:5px;
+  width: 100px;
+  height: 30px;
+  border-radius: 50px;
+  box-shadow: 6px 6px 10px rgba(27, 27, 27, 0.5);
+}
+
+.ButtonIcon {
+  width: 35px;
+  margin: 5px 0;
+  transition: ease-in-out 0.3s;
+  border-radius: 50px;
+}
+
+.searchButton .ButtonIcon:hover {
+  width: 35px;
+  margin: 5px 0;
+  box-shadow: 3px 3px 7px rgba(27, 27, 27, 0.5);
+}
+
+.searchButtonText {
+  margin: 5px 5px 5px 0;
+}
+
+
+
+
+
+.jobs {
+  width: 70vw;
+  margin: auto;
+}
+
+
+
+
+/*////// JOB COMPONENT //////*/
+.jobContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  background-color: var(--light-alt);
+  margin: 40px 0;
+  padding:10px;
+  border-radius: 15px;
+  max-width: 800px;
+  /* box-shadow: 3px 3px 10px rgba(27, 27, 27, 0.3); */
+}
+
+.recruiterLogo {
+  width: 90px;
+  height: 90px;
+  padding: 0 5px;
+  margin: 10px;
+  color: white;
+  display: flex;
+  background-color: var(--secondary);
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+}
+
+.jobData{
+  width: 30%;
+  text-align: left;
+  border-right: solid 1px var(--border);
+}
+
+.workConditions {
+  display: flex;
+  gap:1em;
+  margin-top: 10px;
+}
+
+.jobTitle {
+  font-weight: 700;
+  font-size: 1.5em;
+}
+
+.locationType {
+  background: var(--secondary);
+  border-radius: 5px;
+  width: 80px;
+  height: 30px;
+  color: white;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.workType {
+  background: var(--secondary);
+  border-radius: 5px;
+  width: 80px;
+  height: 30px;
+  color: white;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.jobDescription {
+  width: 60%;
+  text-align: left;
+}
+
+.salary {
+  font-weight: 700;
+  border-bottom: solid 1px var(--tertiary);
+  padding: 8px 0;
+  width: 200px;
+}
+
+.description {
+  padding: 8px 0;
+}
+
+.applyButton {
+  position: absolute;
+  right: 20px;
+  top: -20px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-weight: 600;
+  color: white;
+  background-color: var(--secondary);
+  padding:5px;
+  width: 100px;
+  height: 30px;
+  border-radius: 50px;
+  cursor:pointer;
+  transition: ease-in 0.3s;
+  box-shadow: 3px 3px 7px rgba(27, 27, 27, 0.5);
+}
+
+.applyButton:hover {
+  position: absolute;
+  right: 20px;
+  top: -20px;
+  display: flex;
+  align-items: center;
+  color: var(--tertiary);
+  background-color: var(--primary);
+  padding:5px;
+  width: 100px;
+  height: 30px;
+  border-radius: 50px;
+  box-shadow: 6px 6px 10px rgba(27, 27, 27, 0.5);
+}
+
+.ButtonIcon {
+  width: 35px;
+  margin: 5px 0;
+  transition: ease-in-out 0.3s;
+  border-radius: 50px;
+}
+
+.applyButton .ButtonIcon:hover {
+  width: 35px;
+  margin: 5px 0;
+  box-shadow: 3px 3px 7px rgba(27, 27, 27, 0.5);
+}
