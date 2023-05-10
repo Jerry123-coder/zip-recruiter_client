@@ -10,10 +10,11 @@ import Job from '../../components/Job'
 
 const Applications = () => {
   return (
+    <>
     <div className='pageContainer'>
     <Navbar />
     <div className='searchSection'>
-      <h1>Jobs Applied</h1>
+      <h1>My Applications</h1>
       <div className="searchInputs">
           <div className="jobSearch">
               <span className="icon">
@@ -22,13 +23,13 @@ const Applications = () => {
               <input type="text" name="jobSearch" required />
               <label> search </label>
           </div>
-          <div className="jobLocationSearch">
+          {/* <div className="jobLocationSearch">
               <span className="icon">
                 <MdOutlineLocationOn />
               </span>
               <input type="text" name="jobLocationSearch" required />
               <label> location </label>
-          </div>
+          </div> */}
           <div className="searchButton">
           <img src={ButtonLogo} alt="logo" className="ButtonIcon" />
           <div className="searchButtonText">Search</div>
@@ -50,9 +51,10 @@ const Applications = () => {
     <Job />
     <Job />
     </div>
-    
-    <Logout />
+
     </div>
+
+    </>
   )
 }
 

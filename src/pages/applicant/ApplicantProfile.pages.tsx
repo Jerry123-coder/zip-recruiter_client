@@ -50,8 +50,6 @@ const ApplicantProfile = () => {
     <Job />
     <Job />
     </div>
-    
-    <Logout />
     </div>
   )
 }

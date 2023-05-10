@@ -7,8 +7,10 @@ import ButtonLogo from '../../assets/recruiter_button_icon.png'
 import { FaSearch } from 'react-icons/fa'
 import { MdOutlineLocationOn } from 'react-icons/md'
 import Job from '../../components/Job'
+import ApplicationInterface from '../../components/ApplicationInterface'
 
 const ApplicantHome = () => {
+
   return (
     <div className='pageContainer'>
     <Navbar />
@@ -50,8 +52,6 @@ const ApplicantHome = () => {
     <Job />
     <Job />
     </div>
-    
-    <Logout />
     </div>
   )
 }

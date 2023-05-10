@@ -2,7 +2,7 @@ import React from 'react'
 import { MdDashboard } from 'react-icons/md'
 import { RiBarChart2Fill } from 'react-icons/ri'
 import { FaUsers, FaShippingFast } from 'react-icons/fa'
-// import Logo from '../assets/logo.png'
+import WhiteLogo from '../assets/white_logo.png'
 // import { Link } from 'react-router-dom'
 // import { getDashboard, getUsers } from '../services/apiRequest.services'
 import { isTypeElement } from 'typescript'
@@ -34,10 +34,10 @@ const SideNav = (props: any) => {
     },
   ]
   return (
-    <div>
+    <div >
       <div className="sidebar">
         <div className="sidebar-header">
-          {/* <img src={Logo} alt="logo" className="logo" /> */}
+        <img src={WhiteLogo} alt="logo" className="sidebar-whiteLogo" />
         </div>
         {/* <div className="sidebar-toggle">x</div> */}
         <div className="menu-items" >
@@ -53,7 +53,7 @@ const SideNav = (props: any) => {
               ))
           }
           
-        </div>
+        </div >
         <Logout />
       </div>
       <div className="main">

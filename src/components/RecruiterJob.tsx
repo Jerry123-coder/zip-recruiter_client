@@ -1,21 +1,10 @@
-import React, { useState } from "react";
-import { FaBuilding } from "react-icons/fa";
+import React from 'react'
 
-import ButtonIcon from '../assets/recruiter_button_icon.png'
-import Button from "./Button";
-
-const Job = () => {
-
-  const [apply, setApply] = useState(false);
-
-  const toggleApply = () => {
-      setApply(!apply)
-  }
-
+const RecruiterJob = () => {
   return (
     <div className="jobContainer">
       <div className="recruiterLogo">
-        <FaBuilding />
+        {/* <FaBuilding /> */}
       </div>
       <div className="jobData">
         <div className="jobTitle">Web Developer</div>
@@ -34,13 +23,13 @@ const Job = () => {
           necessitatibus officia aut reiciendis odio.
         </div>
       </div>
-      <Button />
+      {/* <Button /> */}
       {/* <div className="applyButton">
       <img src={ButtonIcon} alt="logo" className="ButtonIcon" />
           <div className="searchButtonText">Apply</div>
       </div> */}
     </div>
-  );
-};
+  )
+}
 
-export default Job;
+export default RecruiterJob

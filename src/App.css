@@ -59,6 +59,7 @@
 /*////// NAVBAR ///////*/
 
 nav {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -112,6 +113,7 @@ li:active {
 }
 
 .applicantProfile {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -133,6 +135,70 @@ li:active {
   border-radius: 50px;
 }
 
+
+/*////// NAV DROP DOWN //////*/
+.dropDownMenu {
+  position: absolute;
+  top: 3.8rem;
+  right: -2rem;
+  /* display: flex; */
+  /* flex-direction: column; */
+
+  width: 100px;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: var(--primary);
+  box-shadow: 6px 6px 12px rgba(27, 27, 27, 0.7);
+ 
+}
+
+.dropDownMenu::before {
+  content: '';
+  position: absolute;
+  top: -0.5rem;
+  right: 2.6rem;
+  width: 20px;
+  height: 20px;
+  transform: rotate(45deg);
+  background-color: var(--primary);
+}
+
+.dropDownElement {
+  /* margin: auto; */
+  display: flex;
+  justify-content: center;
+  color: var(--tertiary)
+}
+
+.dropDownMenu ul {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: flex-start;
+}
+
+/* .dropDownMenu ul li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  
+  padding: 4px;
+  color: var(---tertiary);
+  font-weight: 400;
+  cursor: pointer;
+  transition:ease-in-out 0.2s;
+} */
+
+/* .dropDownMenu ul li:hover {
+  font-weight: 700;
+  padding: 2px;
+  color: var(--tertiary);
+  background-color: var(--border); */
+  /* border-bottom: solid 2px var(--tertiary) ; */
+/* } */
 
 
 /*///// SIGNIN /////*/
@@ -558,7 +624,7 @@ li:active {
   color: var(--tertiary);
   background-color: var(--primary);
   padding:5px;
-  width: 100px;
+  width: 120px;
   height: 30px;
   border-radius: 50px;
   cursor:pointer;
@@ -570,7 +636,7 @@ li:active {
   color: var(--tertiary);
   background-color: var(--light-alt);
   padding:5px;
-  width: 100px;
+  width: 120px;
   height: 30px;
   border-radius: 50px;
   box-shadow: 6px 6px 10px rgba(27, 27, 27, 0.5);
@@ -616,7 +682,7 @@ li:active {
   padding:10px;
   border-radius: 15px;
   max-width: 800px;
-  /* box-shadow: 3px 3px 10px rgba(27, 27, 27, 0.3); */
+  box-shadow: 3px 3px 10px rgba(27, 27, 27, 0.3);
 }
 
 .recruiterLogo {
@@ -700,7 +766,7 @@ li:active {
   color: white;
   background-color: var(--secondary);
   padding:5px;
-  width: 100px;
+  width: 120px;
   height: 30px;
   border-radius: 50px;
   cursor:pointer;
@@ -717,7 +783,7 @@ li:active {
   color: var(--tertiary);
   background-color: var(--primary);
   padding:5px;
-  width: 100px;
+  width: 120px;
   height: 30px;
   border-radius: 50px;
   box-shadow: 6px 6px 10px rgba(27, 27, 27, 0.5);
@@ -734,4 +800,733 @@ li:active {
   width: 35px;
   margin: 5px 0;
   box-shadow: 3px 3px 7px rgba(27, 27, 27, 0.5);
+}
+
+
+
+/*////// APPLICATION INTERFACE COMPONENT //////*/
+.applyOverlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: fixed;
+  background-color: #07086185;
+
+  z-index: 10;
+}
+
+.applicationForm {
+  position: absolute;
+  top: 40%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  /* min-width: 300px; */
+  height: 300px;
+  background-color: white;
+  /* border: solid 3px var(--secondary); */
+  border-radius: 15px;
+  box-shadow: 5px 5px 10px rgba(27, 27, 27, 0.5);
+}
+
+.closeButton {
+  position: absolute;
+  background-color: red;
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+  margin: 5px;
+  right: 0;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  /* font-size: ; */
+  /* box-shadow: 3px 3px 7px rgba(27, 27, 27, 0.5); */
+}
+
+
+.closeButton:hover {
+  background-color: red;
+  color: white;
+  box-shadow: 3px 3px 7px rgba(27, 27, 27, 0.5);
+}
+
+.applicationForm-logo {
+  position: absolute;
+  top: 30px;
+  right: 150px;
+}
+
+.applicantButtons {
+  position: absolute;
+  display: flex;
+  top: 50%;
+  right: 80px;
+  gap: 3rem;
+}
+
+.uploadcv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary);
+  color: var(--tertiary);
+  font-size: 1.2em;
+  font-weight: 700;
+  padding: 5px 10px;
+  width: 180px;
+  height: 40px;
+  border-radius: 5px;
+  transition: ease-in-out 0.5s;
+  cursor: pointer;
+  box-shadow: 2px 2px 4px rgba(27, 27, 27, 0.5);
+}
+
+.uploadcv:hover {
+  background-color: var(--secondary);
+  color: white;
+ 
+  box-shadow: 6px 6px 8px rgba(27, 27, 27, 0.5);
+}
+
+.uploadCoverLetter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary);
+  color: var(--tertiary);
+  font-size: 1.2em;
+  font-weight: 700;
+  padding: 5px 10px;
+  width: 180px;
+  border-radius: 5px;
+  transition: ease-in-out 0.5s;
+  cursor: pointer;
+  box-shadow: 2px 2px 4px rgba(27, 27, 27, 0.5);
+}
+
+.uploadCoverLetter:hover {
+  background-color: var(--secondary);
+  color: white;
+ 
+  box-shadow: 6px 6px 8px rgba(27, 27, 27, 0.5);
+}
+
+.applicationNote {
+  position: absolute;
+  bottom: 40px;
+  left: 130px;
+  font-size: 1.2rem;
+}
+
+
+
+
+/*/////////////////////////////////////////////////*/
+/*/////////////////////////////////////////////////*/
+/*/////////////////////////////////////////////////*/
+
+/*//////////////   RECRUITER UI     ///////////////*/
+
+/*/////////////////////////////////////////////////*/
+/*/////////////////////////////////////////////////*/
+/*/////////////////////////////////////////////////*/
+
+.sidebar {
+  position: fixed;
+  top:0;
+  left:0;
+  bottom: 0;
+  width: 20vw;
+  height: 100%;
+  background:var(--secondary);
+  color: rgb(146, 143, 143);
+}
+
+.sidebar-header {
+  padding: 15px 0;
+  border-bottom: solid 2px  #ffffff65;
+  margin: 0 10px 10px 10px;
+  transition: 0.3s ease-in-out;
+  
+}
+
+.sidebar-whiteLogo {
+
+}
+
+
+.menu-item {
+  display: flex;
+  gap: 1em;
+  padding: 20px 10px 20px 30px;
+  color: var(--border);
+  cursor: pointer;
+  font-weight: 500;
+  
+}
+    
+
+.menu-item:hover {
+  background-color:#b1e522;
+  /* border-right: solid 3px rgb(255, 148, 8); */
+  color: var(--tertiary);
+  font-weight: 700;
+  font-size: large;
+  transition: 0.3s ease-in;
+  padding: 24px 10px 24px 30px;
+  margin: 0 10px;
+  border-radius: 5px;;
+  }
+
+.menuIcon {
+  padding:0 5px 0 25px;
+  font: 500;
+  
+}
+
+.menuIcon:hover {
+  font: 800;
+  /* padding-right: 45px; */
+}
+
+.logout-btn {
+  position:absolute;
+  bottom: 10px;
+  left: 20px;
+  width: 80%;
+
+
+  font-size: large;
+  font-weight: 700;
+  padding: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.575);
+  color:rgba(255, 255, 255, 0.712);
+  background-color:#b1e5223b;
+  border-radius: 10px;
+  text-align: center;
+  margin: 10px;
+  cursor: pointer;
+  transition: ease-in-out 0.4s all;
+}
+
+.logout-btn:hover {
+  position:absolute;
+  bottom: 20px;
+  left: 20px;
+ 
+
+  /* padding: 10px; */
+  border: 1px solid rgb(255, 255, 255);
+  color:var(--tertiary);
+  background-color: var(--primary);
+  /* border-radius: 5px; */
+  text-align: center;
+  margin-top: 10px;
+  cursor: pointer;
+  /* transition: ease-in-out 0.3s; */
+}
+
+
+
+/*////// RECRUITER MAIN PAGE SECTION //////*/
+
+.sidebarSection {
+  width: 30vw;
+}
+
+.mainSection {
+  position: absolute;
+  right: 0;
+  width:80vw;
+}
+
+/*//////  RECRUITER NAV //////*/
+.recruiterNavBar {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10vw 0 5em;
+  border-bottom: solid 2px var(--border);
+  box-shadow: 2px 2px 4px rgba(27, 27, 27, 0.2);
+}
+
+/*////// PAGE CARDS SECTION //////*/
+.pageCards {
+  display: flex;
+  gap: 2em;
+  border-bottom: solid 1px var(--border);
+  margin: 5em;
+}
+
+.postNewJob {
+  width: 300px;
+  height: 150px;
+  background-color: var(--tertiary);
+  color:white;
+  font-size: 1.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  border-radius: 20px;
+  margin: 25px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: ease-in-out 0.3s;
+  box-shadow: 4px 4px 4px rgba(27, 27, 27, 0.5);
+}
+
+.postNewJob:hover, .cardIcon {
+  width: 300px;
+  height: 150px;
+  background-color:var(--primary);
+  /* border: solid 4px var(--primary); */
+  color: var(--tertiary);
+  box-shadow: 6px 6px 12px rgba(27, 27, 27, 0.5);
+}
+
+.postNewJob .cardIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  background-color:var(--primary);
+  border-radius: 50px;
+  width: 80px;
+  height: 80px;
+}
+
+.postNewJob .cardIcon:hover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  background-color:white;
+  border-radius: 50px;
+  width: 80px;
+  height: 80px;
+}
+
+.cardIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  background-color:white;
+  border-radius: 50px;
+  width: 80px;
+  height: 80px;
+}
+
+.postsCount {
+  width: 300px;
+  height: 150px;
+  background-color: var(--light-alt);
+  color: var(--tertiary);
+  font-size: 1.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  border-radius: 20px;
+  margin: 25px;
+  font-weight: 700;
+  /* cursor: pointer; */
+  transition: ease-in-out 0.3s;
+  /* box-shadow: 4px 4px 4px rgba(27, 27, 27, 0.5); */
+}
+
+.applicantsCount {
+  width: 300px;
+  height: 150px;
+  background-color: var(--light-alt);
+  color: var(--tertiary);
+  font-size: 1.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  border-radius: 20px;
+  margin: 25px;
+  font-weight: 700;
+  /* cursor: pointer; */
+  transition: ease-in-out 0.3s;
+  /* box-shadow: 4px 4px 4px rgba(27, 27, 27, 0.5); */
+}
+
+
+/*////// JOBS SECTION //////*/
+.jobsSection {
+  margin: 5em;
+}
+
+
+
+/*/////// APPLICANTS PAGE ///////*/
+.optionsBar {
+  display: flex;
+  width: 100%;
+
+  margin: 30px 0;
+}
+
+.addNewUser {
+  background-color: #023f8a;
+  color: white;
+  width: 130px;
+  padding: 8px 5px;
+  border-radius: 5px;
+  margin: 15px 20px 15px 0;
+  cursor: pointer;
+  transition: ease-in-out 0.3s;
+}
+
+.filterUsers {
+  background-color: #023f8a;
+  color: white;
+  width: 130px;
+  padding: 8px 5px;
+  border-radius: 5px;
+  margin: 15px 20px 15px 0;
+  cursor: pointer;
+  transition: ease-in-out 0.3s;
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border: 1px solid #969899;
+  padding: 0 10px;
+  color: #777b7e;
+  border-radius: 5px;
+  width: 100%;
+  /* max-width: 600px; */
+  margin: 15px 0;
+  cursor: pointer;
+}
+
+.searchBar-input {
+  justify-content: flex-start;
+  padding: 0 10px;
+  border: none;
+  outline: none;
+  width: 100%;
+}
+
+.searchBar-input:active {
+  border: none;
+  outline: none;
+}
+
+
+table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  margin:auto;
+  width: 90%;
+  /* width: 800px; */
+  /* height: 100vh; */
+  /* border-collapse: collapse; */
+  border-radius: 5px;
+  box-shadow: 4px 4px 8px rgba(27, 27, 27, 0.247);
+  margin: 0 15vw 0 5em;
+
+}
+
+th {
+  /* border-bottom: 1px solid black;
+  border: 2px solid black; */
+  border: 1px solid #ddd;
+  padding: 8px;
+
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color:#023f8a;
+  color: white;
+}
+
+td {
+  text-align: left;
+  /* border: 2px solid black; */ 
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.td-icons {
+  display:flex;
+  justify-content: space-around;
+  
+}
+
+.td-icon-accept{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 1.2em;
+  width: 30px;
+  height: 30px;
+  transition: ease-in-out 0.4s;
+}
+
+.td-icon-accept:hover{
+  border-radius: 50%;
+  color: white;
+  background-color: #08a72a;
+  width: 30px;
+  height: 30px;
+}
+
+.td-icon-reject{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 1.2em;
+  width: 30px;
+  height: 30px;
+  transition: ease-in-out 0.4s;
+}
+
+.td-icon-reject:hover{
+  border-radius: 50%;
+  color: white;
+  background-color: #a71b08;
+  width: 30px;
+  height: 30px;
+}
+
+.td-icon-delete{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 1.2em;
+  width: 30px;
+  height: 30px;
+  transition: ease-in-out 0.4s;
+}
+
+.td-icon-delete:hover{
+  border-radius: 50%;
+  color: white;
+  background-color: #f33920;
+  width: 30px;
+  height: 30px;
+}
+
+tr {
+  /* border-radius: 5px; */
+}
+
+tr:nth-child(even){background-color: #acd8f53d;}
+
+tr:hover {background-color: #6d97aa49;}
+
+
+/*/////// JOB POST FORM INTERFACE ////////*/
+
+.jobPost {
+  position: absolute;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  width: 60em;
+  /* min-width: 300px; */
+  height: 55em;
+  background-color: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 5px 5px 10px rgba(27, 27, 27, 0.5);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.jobPostForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.postFormCloseButton {
+  position: absolute;
+  /* background-color: red; */
+  color: red;
+  border: solid 1px red;
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+  margin: 15px;
+  right: 0;
+  top:0;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  transition: ease-in-out 0.3s;
+  /* font-size: ; */
+  /* box-shadow: 3px 3px 7px rgba(27, 27, 27, 0.5); */
+}
+
+
+.postFormCloseButton:hover {
+  background-color: red;
+  color: white;
+  box-shadow: 3px 3px 7px rgba(27, 27, 27, 0.5);
+}
+
+.jobPostForm-logo {
+  position: absolute;
+  top: 30px;
+  right: 330px;
+}
+
+
+
+.jobPostInput-box {
+    position: relative;
+    display: flex;
+    width: 100%;
+    margin:20px 0;
+    /* border-bottom: solid 2px white; */
+}
+
+.jobPostInput-box label {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  font-size: 1em;
+  font-weight: 400;
+  color: #b0b2b3;
+  pointer-events: none;
+  transition: ease-in-out 0.3s;
+}
+
+.jobPostInput-box .icon {
+  position: absolute;
+  right: 14px;
+  bottom: -12px;
+  color: #888d8f;
+  font-size: large;
+  line-height: 75px;;
+}
+
+.jobPostInput-box input {
+  width: 100%;
+  height: 50px;
+  /* background: transparent; */
+  background: none;
+  border-color: #b0b2b3;
+  border-radius: 15px;
+  outline: none;
+  font-size: large;
+  color: rgb(145, 141, 141);
+}
+
+
+.jobPostInput-box input:focus,
+.jobPostInput-box input:valid {
+  border-color:#b2e522;
+} 
+
+.jobPostInput-box input:hover + label,
+.jobPostInput-box input:focus + label,
+.jobPostInput-box input:valid + label {
+  border-bottom-color:#03d9ff;
+  color:black;
+  top: -4px;
+  font-weight: 400;
+  background-color: white;
+  padding: 2px;
+  margin-left: 15px;
+}
+
+
+.jobDescription {
+  position: relative;
+  /* height: 120px; */
+  width: 100%;
+  margin-top: 5px;
+}
+
+.jobDescription label {
+  position: absolute;
+  top: 20%;
+  left: 5px;
+  transform: translateY(-50%);
+  font-size: 1em;
+  font-weight: 400;
+  color: #b0b2b3;
+  pointer-events: none;
+  transition: ease-in-out 0.3s;
+}
+
+
+.jobDescription input {
+  width: 96%;
+  height: 150px;
+  /* background: transparent; */
+  background: none;
+  border-color: #b0b2b3;
+  border-radius: 15px;
+  outline: none;
+  font-size: large;
+  color: rgb(145, 141, 141);
+}
+
+
+.jobDescription input:focus,
+.jobDescription input:valid {
+  border-color:#b2e522;
+} 
+
+.jobDescription input:hover + label,
+.jobDescription input:focus + label,
+.jobDescription input:valid + label {
+  border-bottom-color:#03d9ff;
+  color:black;
+  top: 0px;
+  font-weight: 400;
+  background-color: white;
+  width: 90px;
+  padding: 2px;
+  margin-left: 15px;
+}
+
+.jobPostFormButton {
+  width: 200px;
+  border:none;
+  background-color: #b2e522;
+  color:#343e45;
+  border-radius: 50px;
+  font-size: 24px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 10px 0 10px 0;
+  margin: 20px;
+  transition: ease-in-out 0.5s;
+}
+
+.jobPostFormButton:hover {
+  background-color: #080a7a ;
+  color: white;
 }
