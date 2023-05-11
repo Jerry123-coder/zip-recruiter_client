@@ -263,6 +263,70 @@ li:active {
     color: #080a7a;
     font-weight: 900;
   }
+
+  .signinOptions {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 1.5em;
+  }
+
+  .signinTypeButtons {
+    display: flex;
+    border: solid 1px var(--border);
+    padding: 8px;
+    border-radius: 50px;
+    gap: 1em;
+    cursor: pointer;
+    transition: ease-in-out 0.5s;
+  }
+
+  .signinTypeButtons:hover {
+    display: flex;
+    border: solid 1px var(--secondary);
+    padding: 8px;
+    border-radius: 50px;
+    gap: 1em;
+    cursor: pointer;
+  }
+
+  .signinOption-Active {
+    display: flex;
+    align-items: center;
+    background-color: var(--secondary);
+    color: white;
+    border-radius: 50px;
+    height: 30px;
+    padding: 0 10px;
+    gap: 1em;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .signinOption-InActive {
+    display: flex;
+    align-items: center;
+    background-color: #cacbcc;
+    border-radius: 50px;
+    height: 30px;
+    padding: 0 10px;
+    gap: 1em;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  /* .signinOption:hover, :active {
+    display: flex;
+    align-items: center;
+    background-color: var(--secondary);
+    color: white;
+    border-radius: 50px;
+    height: 30px;
+    padding: 0 10px;
+    gap: 1em;
+    font-weight: 600;
+    /* box-shadow: 0px 1px 3px rgba(0, 0, 0.25); */
+  
   
   form {
     margin-bottom: 4vh;

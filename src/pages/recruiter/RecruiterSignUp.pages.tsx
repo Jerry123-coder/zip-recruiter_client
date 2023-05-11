@@ -23,20 +23,40 @@ const RecruiterSignUp = () => {
     setError("")
 
     const formelements = e.target.elements;
+
     const formvalues = {
+      name: formHandler(formelements, "name"),
       email: formHandler(formelements, "email"),
+      organization: formHandler(formelements, "organization"),
       password: formHandler(formelements, "password"),
-    };
+      confirmPassword: formHandler(formelements, "confirmPassword"),
+
+    }
+
+    fetch ("http://localhost:9000/recruiters/signup",{
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(formvalues)
+      })
+      .then(res => res.json())
+      .then(data =>{
+        console.log(data)})
+      .catch(e)
+
+      navigate('/')
+      const error = e;
+
+
+    console.log({ formvalues })
   }
+
 
   return (
     <div className="signIn-page">
     <div className="imageSection">
       
-    {/* <h1 className='signinMessage'>
-      WELCOME!
-    </h1>
-    <p></p> */}
     <img src={WhiteLogo} alt="logo" className="white-logo" />
     <img src={Recruiter} alt="logo" className="recruiter" />
     </div>
@@ -89,7 +109,7 @@ const RecruiterSignUp = () => {
 
             <span style={{color: "#080a7a"}}>{error}</span>
 
-            <button type="submit" className="FormButton" onClick= {() => navigate('/')}>
+            <button type="submit" className="FormButton">
               sign up
             </button>
           </form>

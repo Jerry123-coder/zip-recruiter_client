@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ItemCard from '../../components/ItemCard'
 import Navbar from '../../components/Navbar'
 import RecruiterNavBar from '../../components/RecruiterNavBar'
@@ -9,6 +9,9 @@ import Job from '../../components/Job'
 import JobPostInterface from '../../components/JobPostInterface'
 
 const RecruiterHome = () => {
+
+  const [closed, setClosed] = useState(false);
+
   return (
     <>
     <div className='sidebarSection'>
@@ -24,7 +27,7 @@ const RecruiterHome = () => {
             <div className="cardIcon">
             <MdWork />
             </div>
-            <div className="postNewJob-text">New Job Post</div>
+            <div className="postNewJob-text" onClick={() => {setClosed(false)}}>New Job Post</div>
           </div>
 
           <div className="postsCount">

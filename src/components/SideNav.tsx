@@ -42,9 +42,10 @@ const SideNav = (props: any) => {
         {/* <div className="sidebar-toggle">x</div> */}
         <div className="menu-items" >
           {
-            menuItems.map((item) => (
+            menuItems.map((item, key) => (
               
               <div className="menu-item" 
+              key={key}
                 onClick={() => navigate(`${item.path}`) }
               >
                  <div className="menuIcon" >{item.icon}</div>

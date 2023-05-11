@@ -1,45 +1,22 @@
-// const Signin = () => {
-//   return (
-//     <div>
-//       Signin page
-//       <div>
-//       <Link to='/recruiter/home'><button>Signin as recruiter</button></Link>
-//       <Link to='/applicant/home'><button>Signin as applicant</button></Link>
-//       </div>
-//       <div>
-//         Don't have an account? Create one here
-//        <Link to='/recruiter/signup'> <button>Recruiter</button></Link>
-//        <Link to='/applicant/signup'> <button>Applicant</button></Link>
-//       </div>
-//     </div>
-//   )
-// }
-
-
-
-
 import React, { createContext, useState } from "react";
 import '../App.css';
 import { useNavigate } from "react-router-dom";
 import Logo from '../assets/logo.png';
 import WhiteLogo from '../assets/white_logo.png'
 import RecruiterApplicant from '../assets/recruiter_applicant.png'
-import Navbar from "../components/Navbar";
-import { Link } from "react-router-dom";
-// import formHandler from "../services/formHandler.services";
-// import { getDashboard, postData, settoken } from "../services/apiRequest.services";
-import { setegid } from "process";
-import {MdEmail} from "react-icons/md"
-import {HiLockClosed} from "react-icons/hi"
+import {MdEmail, MdWork} from "react-icons/md";
+import { FaUserTie } from 'react-icons/fa';
+import {HiLockClosed} from "react-icons/hi";
 import formHandler from "../services/formHandler.services";
+import { postData, settoken } from "../services/apiRequests";
 
 
 const Signin = () => {
   const navigate = useNavigate();
   const [error, setError] = useState<string>("");
-  const [dashboardData, setDashboardData] = useState("")
+  const [recruiterToggle, setRecruiterToggle] = useState(true);
 
-  // const { globalState, setGlobalState } = createContext(GlobalContext);
+ 
 
   const submitform = async (e: React.FormEvent<HTMLFormElement> | any) => {
     //prevent form page refresh
@@ -52,17 +29,33 @@ const Signin = () => {
       password: formHandler(formelements, "password"),
     };
 
-    
-      // const request:any = await getDashboard();
-      //   if (request.success) {
-      //     // settoken({key:"user", data: request.data})
-      //     console.log(request)
-      //     setDashboardData(request.message)
-      //     window.localStorage.setItem('dashboard', JSON.stringify(dashboardData));
-      //   }
-      //   setError(request.message)
-    
+    var signinOption
+   { recruiterToggle ? signinOption = "recruiter" :  signinOption = "applicant"}
+
+
+   if ( signinOption === 'recruiter' ) {
+    const request = await postData({ url: "recruiters/signin", body: formvalues });
+    if (request.success) {
+      const { accessToken, refreshToken, data } = request;
+      settoken({ key: "user", data });
+      settoken({ key: "tokens", data: { accessToken, refreshToken } });
+      return navigate("/recruiter/home");
+    }
+    setError(request.message);
+  } else {
+    const request = await postData({ url: "applicants/signin", body: formvalues });
+    if (request.success) {
+      const { accessToken, refreshToken, data } = request;
+      settoken({ key: "user", data });
+      settoken({ key: "tokens", data: { accessToken, refreshToken } });
+      console.log(request.success)
+      return navigate("/applicant/home");
+    }
+    setError(request.message);
   }
+   
+
+  } 
 
   return (
     <div className="signIn-page">
@@ -80,7 +73,26 @@ const Signin = () => {
     <img src={Logo} alt="logo" className="login-logo" />
         <div className="formContainer">
           <form onSubmit={(e) => submitform(e)}>
-          <h1>SIGN IN</h1>
+            <div className="signinOptions">
+                <h1>SIGN IN</h1>
+                <div className="signinTypeButtons" onClick={() => setRecruiterToggle(!recruiterToggle)}>
+                  {
+                    recruiterToggle ? (
+                      <>
+                      <div className="signinOption-Active" > as recruiter <MdWork /> </div>
+                      <div className="signinOption-InActive" >as applicant <FaUserTie /></div>
+                      </>
+                     ) : (
+                      <>
+                      <div className="signinOption-InActive" > as recruiter <MdWork /> </div>
+                      <div className="signinOption-Active" >as applicant <FaUserTie /></div>
+                      </>
+                     )
+                  }
+                  
+                </div>
+
+            </div>
             <div className="input-box">
               <span className="icon">
                 <MdEmail />
@@ -98,10 +110,11 @@ const Signin = () => {
             </div>
 
             <span style={{color: "red"}}>{error}</span>
-
-            <button type="submit" className="FormButton" onClick={() => {navigate('/recruiter/home')}}>
+            
+              
+            <button type="submit" className="FormButton">
               sign in
-            </button>
+            </button>            
           </form>
           <div className="form-border"></div>
           <h4>

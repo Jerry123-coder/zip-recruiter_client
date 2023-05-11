@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import Logo from '../assets/logo.png'
+import { gettoken } from '../services/apiRequests';
 import formHandler from '../services/formHandler.services';
 
 const JobPostInterface = () => {
@@ -20,11 +21,38 @@ const JobPostInterface = () => {
     e.preventDefault();
     setError("")
 
+    const userDetails = gettoken('user')
+    console.log(userDetails)
+
     const formelements = e.target.elements;
     const formvalues = {
-      email: formHandler(formelements, "email"),
-      password: formHandler(formelements, "password"),
+      job_title: formHandler(formelements, "job_title"),
+      job_location: formHandler(formelements, "job_location"),
+      job_description: formHandler(formelements, "job_description"),
+      pay: formHandler(formelements, "pay"),
+      recruiterRecruiterId: userDetails.recruiter_id ,
     };
+
+
+
+    fetch ("http://localhost:9000/recruiters/post_job",{
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(formvalues)
+      })
+      .then(res => res.json())
+      .then(data =>{
+        console.log(data)})
+      .catch(e)
+
+    //   navigate('/recruiter/home')
+    setClosed(true)
+      const error = e;
+
+
+    console.log({ formvalues })
   }
    
 
@@ -32,6 +60,7 @@ const JobPostInterface = () => {
     <>
     {
         closed ? '' :(
+                
             <div className='applyOverlay'>
         <div className="jobPost">
         <img src={Logo} alt="logo" className="jobPostForm-logo" />
@@ -43,7 +72,7 @@ const JobPostInterface = () => {
               <span className="icon">
                 {/* <FaUserAlt /> */}
               </span>
-              <input type="text" name="name" required />
+              <input type="text" name="job_title" required />
               <label> Job title </label>
             </div>
 
@@ -51,23 +80,23 @@ const JobPostInterface = () => {
               <span className="icon">
                 {/* <MdEmail /> */}
               </span>
-              <input type="email" name="location" required />
+              <input type="text" name="job_location" required />
               <label> job location </label>
             </div>
 
-            <div className="jobPostInput-box">
-              <span className="icon">
+            {/* <div className="jobPostInput-box">
+              <span className="icon"> */}
                 {/* <FaBuilding /> */}
-              </span>
-              <input type="text" name="employmentType" required />
+              {/* </span>
+              <input type="text" name="job_Type" required />
               <label> employment type </label>
-            </div>
+            </div> */}
 
             <div className="jobPostInput-box">
               <span className="icon">
                 {/* <HiLockClosed /> */}
               </span>
-              <input type="password" name="pay" required />
+              <input type="text" name="pay" required />
               <label> pay</label>
             </div>
 
@@ -75,7 +104,7 @@ const JobPostInterface = () => {
               <span className="icon">
                 {/* <HiLockClosed /> */}
               </span>
-              <input type="text" name="jobDescription" required />
+              <input type="text" name="job_description" required />
               <label> description</label>
             </div>
 

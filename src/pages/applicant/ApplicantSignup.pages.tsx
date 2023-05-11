@@ -26,11 +26,36 @@ const ApplicantSignup = () => {
     setError("")
 
     const formelements = e.target.elements;
+      
     const formvalues = {
+      name: formHandler(formelements, "name"),
       email: formHandler(formelements, "email"),
       password: formHandler(formelements, "password"),
-    };
+      confirmPassword: formHandler(formelements, "confirmPassword"),
+      cv: formHandler(formelements, "cv"),
+      cover_letter: formHandler(formelements, "cover_letter"),
+
+    }
+
+    fetch ("http://localhost:9000/applicants/signup",{
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(formvalues)
+      })
+      .then(res => res.json())
+      .then(data =>{
+        console.log(data)})
+      .catch(e)
+
+      navigate('/')
+      const error = e;
+
+
+    console.log({ formvalues })
   }
+  
 
 
   return (
@@ -87,13 +112,21 @@ const ApplicantSignup = () => {
               <span className="icon">
                 <ImFolderUpload />
               </span>
-              <input type="password" name="confirmPassword" required />
+              <input type="text" name="cv" required />
               <label> Upload resume</label>
+            </div>
+
+            <div className="input-box">
+              <span className="icon">
+                <ImFolderUpload />
+              </span>
+              <input type="text" name="cover_letter" required />
+              <label> Upload cover letter</label>
             </div>
 
             <span style={{color: "#080a7a"}}>{error}</span>
 
-            <button type="submit" className="FormButton" onClick= {() => navigate('/')}>
+            <button type="submit" className="FormButton">
               sign up
             </button>
           </form>

@@ -21,7 +21,7 @@ function App() {
       <Route path='/recruiter/home' element={<RecruiterHome />}></Route>
       <Route path='/recruiter/applicants' element={<Applicants />}></Route>
       <Route path='/recruiter/profile' element={<RecruiterProfile />}></Route>
-      <Route path='/applicant/home' element={<ApplicantHome />}></Route>
+      <Route path='/applicant/home' element={<ApplicantHome />}/>
       <Route path='/applicant/applications' element={<Applications />}></Route>
       <Route path='/applicant/profile' element={<ApplicantProfile />}></Route>
     </Routes>
