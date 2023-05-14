@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ItemCard from '../../components/ItemCard'
 import Navbar from '../../components/Navbar'
 import RecruiterNavBar from '../../components/RecruiterNavBar'
@@ -7,10 +7,44 @@ import { MdWork, MdHistory } from 'react-icons/md'
 import { FaUsers } from 'react-icons/fa'
 import Job from '../../components/Job'
 import JobPostInterface from '../../components/JobPostInterface'
+import { IJob } from '../../interfaces'
+import { getId } from '../../services/apiRequests'
+import RecruiterJob from '../../components/RecruiterJob'
 
 const RecruiterHome = () => {
 
-  const [closed, setClosed] = useState(false);
+  const [jobData, setJobData] = useState<IJob[]>([]);
+
+  
+
+  useEffect(() => {
+    const userData = getId('user')
+    const id = userData.recruiter_id
+    try {
+      fetch (`http://localhost:9000/recruiters/recruiter's_jobs/${id}`,{
+        method: "GET",
+        headers: {
+          "Content-type": "application/json",
+        },
+        })
+          .then(res => res.json())
+          .then(data =>{
+            // console.log({jobdata: data})
+            setJobData(data.job_posts)
+          })
+          // console.log({jobData})
+        // .catch(e)
+    } catch(e) {
+      console.log(e)
+    }
+   
+      
+  }, []);
+  const [postJob, setPostJob] = useState(false);
+
+
+  
+
 
   return (
     <>
@@ -23,11 +57,12 @@ const RecruiterHome = () => {
           Quick access
         </div>
         <div className ='pageCards'>
-          <div className="postNewJob">
+          <div className="postNewJob" onClick={() => {setPostJob(!postJob)}}>
             <div className="cardIcon">
             <MdWork />
             </div>
-            <div className="postNewJob-text" onClick={() => {setClosed(false)}}>New Job Post</div>
+            <div className="postNewJob-text" >New Job Post</div>
+            
           </div>
 
           <div className="postsCount">
@@ -47,14 +82,27 @@ const RecruiterHome = () => {
           {/* <ItemCard itemIsUser={true}/> */}
         </div>
       <div className='jobsSection'>
-        <Job />
-        <Job />
-        <Job />
-        <Job />
-        <Job />
-        RecruiterHome</div>
+        {
+          jobData.map(({job_id, job_title, organization, job_location, job_type, job_description, pay, recruiterId}) => (
+            < RecruiterJob
+            job_id={job_id}
+            job_title={job_title}
+            organization={organization}
+            job_location={job_location}
+            job_type={job_type}
+            job_description={job_description}
+            pay={pay}
+            recruiterId={recruiterId}
+            />
+          ))
+        }
+        
+      </div>
 
-        <JobPostInterface />
+        {
+          postJob ? <JobPostInterface /> : ''
+        }
+        
       </div>
       
     

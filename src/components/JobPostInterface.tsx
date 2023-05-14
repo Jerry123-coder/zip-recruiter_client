@@ -27,7 +27,9 @@ const JobPostInterface = () => {
     const formelements = e.target.elements;
     const formvalues = {
       job_title: formHandler(formelements, "job_title"),
+      organization: formHandler(formelements, "organization"),
       job_location: formHandler(formelements, "job_location"),
+      job_type: formHandler(formelements, "job_type"),
       job_description: formHandler(formelements, "job_description"),
       pay: formHandler(formelements, "pay"),
       recruiterRecruiterId: userDetails.recruiter_id ,
@@ -80,22 +82,30 @@ const JobPostInterface = () => {
               <span className="icon">
                 {/* <MdEmail /> */}
               </span>
+              <input type="text" name="organization" required />
+              <label> organization </label>
+            </div>
+
+            <div className="jobPostInput-box">
+              {/* <span className="icon">
+                <MdEmail />
+              </span> */}
               <input type="text" name="job_location" required />
               <label> job location </label>
             </div>
 
-            {/* <div className="jobPostInput-box">
-              <span className="icon"> */}
-                {/* <FaBuilding /> */}
-              {/* </span>
-              <input type="text" name="job_Type" required />
+            <div className="jobPostInput-box">
+              {/* <span className="icon"> 
+                <FaBuilding />
+                </span> */}
+              <input type="text" name="job_type" required />
               <label> employment type </label>
-            </div> */}
+            </div> 
 
             <div className="jobPostInput-box">
-              <span className="icon">
-                {/* <HiLockClosed /> */}
-              </span>
+              {/* <span className="icon">
+                <HiLockClosed />
+              </span> */}
               <input type="text" name="pay" required />
               <label> pay</label>
             </div>

@@ -1,23 +1,24 @@
 import React, { useState } from 'react'
 import ButtonIcon from '../../assets/recruiter_button_icon.png'
+import ApplicationInterface from '../ApplicationInterface';
+import DeletePrompt from '../DeletePrompt';
 
 const DeleteJob = () => {
     const [apply, setApply] = useState(false);
 
-    const toggleApply = () => {
-        setApply(!apply)
-    }
+    
+          
   return (
    
-    <div>
-      <div className="applyButton" onClick={toggleApply}>
+    <div >
+      <div className="deleteButton">
       <img src={ButtonIcon} alt="logo" className="ButtonIcon" />
-        <div className="searchButtonText">pending</div>
-      <div>
-      {/* {
-        apply ? (<ApplicationInterface />) : ''
-      } */}
-      </div>
+        <div className="searchButtonText">delete</div>
+      {/* <div>
+      {
+        apply ? (<DeletePrompt />) : ''
+      }
+      </div> */}
     </div>      
     </div>
   )

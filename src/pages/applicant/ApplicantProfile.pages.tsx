@@ -44,11 +44,11 @@ const ApplicantProfile = () => {
       
     </div>
     <div className="jobs">
+    {/* <Job />
     <Job />
     <Job />
     <Job />
-    <Job />
-    <Job />
+    <Job /> */}
     </div>
     </div>
   )

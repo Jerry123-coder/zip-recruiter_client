@@ -853,6 +853,66 @@ li:active {
   box-shadow: 6px 6px 10px rgba(27, 27, 27, 0.5);
 }
 
+.editButton {
+  position: absolute;
+  right: 180px;
+  top: -20px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  font-weight: 700;
+  font-size: 1.2em;
+  color: white;
+  background-color: var(--secondary);
+  padding:5px;
+  width: 120px;
+  height: 30px;
+  border-radius: 50px;
+  cursor:pointer;
+  transition: ease-in 0.3s;
+  box-shadow: 3px 3px 7px rgba(27, 27, 27, 0.5);
+}
+
+.editButton:hover {
+  color: var(--tertiary);
+  background-color: var(--primary);
+  padding:5px;
+  width: 120px;
+  height: 30px;
+  border-radius: 50px;
+  box-shadow: 6px 6px 10px rgba(27, 27, 27, 0.5);
+}
+
+.deleteButton {
+  position: absolute;
+  right: 20px;
+  top: -20px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-weight: 700;
+  font-size: 1.2em;
+  color: white;
+  background-color: rgb(216, 49, 49);
+  padding:5px;
+  width: 120px;
+  height: 30px;
+  border-radius: 50px;
+  cursor:pointer;
+  transition: ease-in 0.3s;
+  box-shadow: 3px 3px 7px rgba(27, 27, 27, 0.5);
+}
+
+.deleteButton:hover {
+  color: rgb(24, 23, 23);
+  background-color: red;
+  padding:5px;
+  width: 120px;
+  height: 30px;
+  border-radius: 50px;
+  box-shadow: 6px 6px 10px rgba(27, 27, 27, 0.5);
+}
+
 .ButtonIcon {
   width: 35px;
   margin: 5px 0;

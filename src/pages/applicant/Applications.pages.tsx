@@ -45,11 +45,11 @@ const Applications = () => {
       
     </div>
     <div className="jobs">
+    {/* <Job />
     <Job />
     <Job />
     <Job />
-    <Job />
-    <Job />
+    <Job /> */}
     </div>
 
     </div>

@@ -47,6 +47,7 @@ const ApplicantSignup = () => {
       .then(res => res.json())
       .then(data =>{
         console.log(data)})
+      .then()
       .catch(e)
 
       navigate('/')

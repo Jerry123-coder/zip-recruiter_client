@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import { FaBuilding } from "react-icons/fa";
 
 import ButtonIcon from '../assets/recruiter_button_icon.png'
+import { IJob } from "../interfaces";
 import Button from "./Button";
 
-const Job = () => {
+const Job = ({job_id, job_title, organization, job_location, job_type, job_description, pay, recruiterId}: IJob) => {
 
   const [apply, setApply] = useState(false);
+  const [job, setJob ] = useState<IJob[]>([])
+
 
   const toggleApply = () => {
       setApply(!apply)
@@ -18,20 +21,17 @@ const Job = () => {
         <FaBuilding />
       </div>
       <div className="jobData">
-        <div className="jobTitle">Web Developer</div>
-        <div className="organization">Accacia Software Solutions</div>
+        <div className="jobTitle">{job_title}</div>
+        <div className="organization">{organization}</div>
         <div className="workConditions">
-          <div className="locationType">Remote</div>
-          <div className="workType">Fulltime</div>
+          <div className="locationType">{job_location}</div>
+          <div className="workType">{job_type}</div>
         </div>
       </div>
       <div className="jobDescription">
-        <div className="salary">$5,000 - $8,000</div>
+        <div className="salary">{pay}</div>
         <div className="description">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus,
-          corrupti, quasi sapiente magni, quisquam doloremque assumenda
-          provident reiciendis impedit cum soluta sed cumque. Ex in
-          necessitatibus officia aut reiciendis odio.
+          {job_description}
         </div>
       </div>
       <Button />

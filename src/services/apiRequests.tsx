@@ -14,6 +14,7 @@ interface IToken {
   refreshToken: string;
 }
 
+// const [jobs, setJobs] = useState[]('')
 
 
 const base = "http://localhost:9000";
@@ -66,6 +67,37 @@ const postData = async ({ baseUrl = base, url, body, get }: IRequest) => {
   }
 };
 
+
+// const fetchJob = async (id: number) => {
+//     fetch (`http://localhost:9000/recruiters/recruiter's_jobs/${id}`,{
+//       method: "GET",
+//       headers: {
+//         "Content-type": "application/json",
+//       },
+//       body: JSON.stringify(formvalues)
+//       })
+//       .then(res => res.json())
+//       .then(data =>{setJobs(data)})
+//       .catch(e)
+
+//       navigate('/')
+//       const error = e;
+// }
+
+export const getId = (key:string) => {
+    try {
+        const userData = window.localStorage.getItem(key);
+        if (userData) return JSON.parse(userData);
+    
+        return {userData}
+    
+        // return null;
+      } catch (e) {
+        console.error(e);
+        return null;
+      }
+}
+
 const gettoken = (key: string) => {
   try {
     const tokens = window.localStorage.getItem(key);
@@ -100,5 +132,8 @@ const cleartoken = async (key?: string) => {
     return false;
   }
 };
+
+
+
 
 export { postData, gettoken, settoken, cleartoken };
