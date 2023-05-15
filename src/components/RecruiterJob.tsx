@@ -4,11 +4,14 @@ import React, { useState } from "react";
 import { FaBuilding } from "react-icons/fa";
 import ButtonIcon from '../assets/recruiter_button_icon.png'
 import { IJob } from "../interfaces";
+import JobEditInterface from './JobEditInterface';
 
 
 const Job = ({job_id, job_title, organization, job_location, job_type, job_description, pay, recruiterId}: IJob) => {
 
   const [apply, setApply] = useState(false);
+  const [editJob, setEditJob] = useState(false);
+
   const [job, setJob ] = useState<IJob[]>([])
 
   const toggleApply = () => {
@@ -43,6 +46,8 @@ const Job = ({job_id, job_title, organization, job_location, job_type, job_descr
     } catch(e) {
       console.log(e)
     }
+
+
     
 }
 
@@ -77,13 +82,31 @@ const Job = ({job_id, job_title, organization, job_location, job_type, job_descr
         </div>
       </div>
       
-      <EditJob />
+      <div className="editButton" onClick={() => setEditJob(!editJob)}>
+      <img src={ButtonIcon} alt="logo" className="ButtonIcon" />
+        <div className="searchButtonText">edit</div>
+      </div>
 
       <div className="deleteButton" onClick={()=>deleteJob()}>
       <img src={ButtonIcon} alt="logo" className="ButtonIcon" />
         <div className="searchButtonText">delete</div>
     </div>      
      
+
+     {
+      editJob ? (
+        <JobEditInterface
+        job_id={job_id}
+        job_title={job_title}
+        organization={organization}
+        job_location={job_location}
+        job_type={job_type}
+        job_description={job_description}
+        pay={pay}
+        recruiterId={recruiterId}
+        /> 
+      ) : ''
+     }
     </div>
   );
 };

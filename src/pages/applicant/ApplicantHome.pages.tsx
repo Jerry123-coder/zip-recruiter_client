@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Navigate } from 'react-router-dom'
 import Logout from '../../components/Logout'
 import Navbar from '../../components/Navbar'
@@ -8,8 +8,43 @@ import { FaSearch } from 'react-icons/fa'
 import { MdOutlineLocationOn } from 'react-icons/md'
 import Job from '../../components/Job'
 import ApplicationInterface from '../../components/ApplicationInterface'
+import jobs from '../../jobs.json'
+import ItemCard from '../../components/ItemCard'
+import { IJob } from '../../interfaces'
+import { getId } from '../../services/apiRequests'
 
 const ApplicantHome = () => {
+
+  const [jobQuery, setJobQuery] = useState('')
+  const [jobData, setJobData] = useState<IJob[]>([])
+
+  const search = ({jobs}:any) => {
+    return jobs.filter((job:any) => job.job_title.toLowerCase().includes(jobQuery));
+  }
+
+  useEffect(() => {
+    const userData = getId('user')
+    const id = userData.recruiter_id
+    try {
+      fetch (`http://localhost:9000/applicants/jobs`,{
+        method: "GET",
+        headers: {
+          "Content-type": "application/json",
+        },
+        })
+          .then(res => res.json())
+          .then(data =>{
+            // console.log({jobdata: data})
+            setJobData(data.job_posts)
+          })
+          // console.log({jobData})
+        // .catch(e)
+    } catch(e) {
+      console.log(e)
+    }
+   
+      
+  }, []);
 
   return (
     <div className='pageContainer'>
@@ -21,7 +56,7 @@ const ApplicantHome = () => {
               <span className="icon">
                 <FaSearch />
               </span>
-              <input type="text" name="jobSearch" required />
+              <input type="text" name="jobSearch" value={jobQuery} onChange={(e)=> setJobQuery(e.target.value)} required />
               <label> search </label>
           </div>
           <div className="jobLocationSearch">
@@ -46,11 +81,21 @@ const ApplicantHome = () => {
       
     </div>
     <div className="jobs">
-    {/* <Job />
-    <Job />
-    <Job />
-    <Job />
-    <Job /> */}
+     {
+          jobData.map(({job_id, job_title, organization, job_location, job_type, job_description, pay, recruiterId}) => (
+            // jobs.map(() => (
+            < Job
+            job_id={job_id}
+            job_title={job_title}
+            organization={organization}
+            job_location={job_location}
+            job_type={job_type}
+            job_description={job_description}
+            pay={pay}
+            recruiterId={recruiterId}
+            />
+          ))
+        }
     </div>
     </div>
   )
