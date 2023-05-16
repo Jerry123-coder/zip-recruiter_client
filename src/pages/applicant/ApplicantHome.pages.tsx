@@ -34,8 +34,8 @@ const ApplicantHome = () => {
         })
           .then(res => res.json())
           .then(data =>{
-            // console.log({jobdata: data})
-            setJobData(data.job_posts)
+            
+            setJobData(data.jobs)
           })
           // console.log({jobData})
         // .catch(e)
@@ -82,7 +82,7 @@ const ApplicantHome = () => {
     </div>
     <div className="jobs">
      {
-          jobData.map(({job_id, job_title, organization, job_location, job_type, job_description, pay, recruiterId}) => (
+          jobData?.map(({job_id, job_title, organization, job_location, job_type, job_description, pay, recruiterRecruiterId}) => (
             // jobs.map(() => (
             < Job
             job_id={job_id}
@@ -92,7 +92,7 @@ const ApplicantHome = () => {
             job_type={job_type}
             job_description={job_description}
             pay={pay}
-            recruiterId={recruiterId}
+            recruiterRecruiterId={recruiterRecruiterId}
             />
           ))
         }

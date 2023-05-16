@@ -1,73 +1,71 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Job from '../../components/Job'
 import RecruiterNavBar from '../../components/RecruiterNavBar'
 import SideNav from '../../components/SideNav'
 import { FaUserEdit, FaUser, FaFilter, FaSearch } from 'react-icons/fa'
 import { MdDelete } from 'react-icons/md'
 import { FiUserX, FiUserCheck } from 'react-icons/fi'
+import { validateHeaderValue } from 'http'
+import data from '../../applicantData.json'
+import { getId } from '../../services/apiRequests'
+import { IApplicants } from '../../interfaces'
 
 const Applicants = () => {
 
   const [error, setError] = useState<any>("");
+  const [accepted, setAccepted] = useState(false);
+  const [rejected, setRejected] = useState(false);
+  const [deleted, setDeleted] = useState(false);
+  const [jobData, setJobData] = useState<IApplicants[]>([])
 
-  const handleSubmit = async(e: any) => {
-    e.preventDefault();
-
-  //   const formelements = e.target.elements;
-  //   const formvalues = {
-  //     email: formHandler(formelements, "email"),
-  //     password: formHandler(formelements, "password"),
-  //   };
-
-  //   const request = await postData({ url: "user/new_user", body: formvalues });
-  //     if (request.success) {
-  //       settoken({key:"user", data: request.data})
-  //     }
-  //     setError(request.message)
-  // };
   
-  // const [ searchInput, setSearchInput ] = useState<string>('')
-  // const handleSearch = (e:any) => {
-  //   e.preventDefault();
-  //   setSearchInput(e.target.value);
-  }
 
-  const data = [
-    {
-      id: 1,
-      name: "Akram",
-      email: "dela@mail.com",
-      job: "web developer",
-      cv: " cv2",
-      coverLetter: "cover letter1"
+  useEffect(() => {
+    const userData = getId('user')
+    const id = userData.recruiter_id
+    try {
+      fetch (`http://localhost:9000/recruiters/applicants/${id}`,{
+        method: "GET",
+        headers: {
+          "Content-type": "application/json",
+        },
+        })
+          .then(res => res.json())
+          .then(data =>{
+            
+            setJobData(data.job_applications)
+          })
+         
+    } catch(e) {
+      console.log(e)
+    }
+   
       
-    },
-    {
-      id:2,
-      name: "Ama",
-      email: "dela@mail.com",
-      job: "web developer",
-      cv: " cv2",
-      coverLetter: "cover letter1"
-    },
-    {
-      id:3,
-      name: "Michael",
-      email: "dela@mail.com",
-      job: "web developer",
-      cv: " cv2",
-      coverLetter: "cover letter1"
-    },
-    {
-      id:4,
-      name: "Akose",
-      email: "dela@mail.com",
-      job: "web developer",
-      cv: " cv2",
-      coverLetter: "cover letter1"
-    },
-  ];
-  
+  }, []);
+
+  const manageStatus = (data) => {
+    const userData = getId('user')
+    const id = userData.recruiter_id
+    const jobId= jobData.application_id
+
+
+    try {
+      fetch (`http://localhost:9000/recruiters/applicants/${id}`,{
+        method: "GET",
+        headers: {
+          "Content-type": "application/json",
+        },
+        })
+          .then(res => res.json())
+          .then(data =>{
+            
+            setJobData(data.job_applications)
+          })
+         
+    } catch(e) {
+      console.log(e)
+    }
+  }
 
   return (
     <div>
@@ -103,27 +101,58 @@ const Applicants = () => {
                 <th>Manage Status</th>
               </tr>
             </thead>
+            <React.Fragment>
             <tbody>
-              {data.map((value, key) => {
+              {jobData.map((value, key) => {
                 return (
+                  
                   <tr key={key}>
-                    <td>{value.id}</td>
-                    <td>{value.name}</td>
-                    <td>{value.email}</td>
-                    <td>{value.job}</td>
+                    <td>{key}</td>
+                    <td>{value.applicant_name}</td>
+                    <td>{value.applicant_email}</td>
+                    <td>{value.job_title}</td>
                     <td>{value.cv}</td>
-                    <td>{value.coverLetter}</td>
+                    <td>{value.cover_letter}</td>
                     <td>
                       <div className="td-icons">
-                      <div className='td-icon-accept'><FiUserCheck/></div>
-                      <div className='td-icon-reject'><FiUserX/></div>
-                      <div className='td-icon-delete'><MdDelete/></div>
+                      
+                        <div onClick={() => value.status="accepted"}>
+                          {
+                            (value.status==="accepted") ? (
+                              <div className='td-icon-accept-active' ><FiUserCheck/></div>
+                            ) : (
+                              <div className='td-icon-accept' ><FiUserCheck/></div>
+                            )
+                          }
+                        </div>
+
+                        <div onClick={() => value.status="rejected"}>
+                          {
+                            (value.status==="rejected") ? (
+                              <div className='td-icon-reject-active' ><FiUserX/></div>
+                            ) : (
+                              <div className='td-icon-reject' ><FiUserX/></div>
+                            )
+                          }
+                        </div>
+
+                        <div onClick={() => setDeleted(!deleted)}>
+                          {
+                            (value.status==="deleted") ? (
+                              <div className='td-icon-delete-active' ><MdDelete/></div>
+                            ) : (
+                              <div className='td-icon-delete' ><MdDelete/></div>
+                            )
+                          }
+                        </div>
                       </div>
                     </td>
                   </tr>
+                  
                 );
               })}
             </tbody>
+            </React.Fragment>
           </table>
           </div>
           

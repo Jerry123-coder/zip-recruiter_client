@@ -1,0 +1,39 @@
+ [
+    {
+      "id": 1,
+      "name": "Akram",
+      "email": "dela@mail.com",
+      "job": "web developer",
+      "cv": " cv2",
+      "coverLetter": "cover letter1",
+      "status": "pending"
+      
+    },
+    {
+      "id": 2,
+      "name": "Ama",
+      "email": "dela@mail.com",
+      "job": "web developer",
+      "cv": "cv2",
+      "coverLetter": "cover letter1",
+      "status": "accepted"
+    },
+    {
+      "id":3,
+      "name": "Michael",
+      "email": "dela@mail.com",
+      "job": "web developer",
+      "cv": " cv2",
+      "coverLetter": "cover letter1",
+      "status": "deleted"
+    },
+    {
+      "id":4,
+      "name": "Akose",
+      "email": "dela@mail.com",
+      "job": "web developer",
+      "cv": " cv2",
+      "coverLetter": "cover letter1",
+      "status":"accepted"
+    }
+]

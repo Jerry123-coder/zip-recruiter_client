@@ -6,7 +6,7 @@ import { IJob } from '../interfaces';
 import { gettoken } from '../services/apiRequests';
 import formHandler from '../services/formHandler.services';
 
-const JobEditInterface = ({job_id, job_title, organization, job_location, job_type, job_description, pay, recruiterId}: IJob) => {
+const JobEditInterface = ({job_id, job_title, organization, job_location, job_type, job_description, pay, recruiterRecruiterId}: IJob) => {
     const [closed, setClosed] = useState(false);
 
     const toggleClosed = () => {
