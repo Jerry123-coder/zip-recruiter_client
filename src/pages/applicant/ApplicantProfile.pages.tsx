@@ -1,12 +1,9 @@
 import React from 'react'
-import { Navigate } from 'react-router-dom'
-import Logout from '../../components/Logout'
 import Navbar from '../../components/Navbar'
 import ButtonLogo from '../../assets/recruiter_button_icon.png'
 
 import { FaSearch } from 'react-icons/fa'
 import { MdOutlineLocationOn } from 'react-icons/md'
-import Job from '../../components/Job'
 
 const ApplicantProfile = () => {
   return (
@@ -44,11 +41,6 @@ const ApplicantProfile = () => {
       
     </div>
     <div className="jobs">
-    {/* <Job />
-    <Job />
-    <Job />
-    <Job />
-    <Job /> */}
     </div>
     </div>
   )

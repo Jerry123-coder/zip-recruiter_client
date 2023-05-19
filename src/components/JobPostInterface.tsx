@@ -12,9 +12,7 @@ const JobPostInterface = ({ addjob }: { addjob: (job: IJob) => void }) => {
     setClosed(true);
   };
 
-  const navigate = useNavigate();
   const [error, setError] = useState<string>("");
-  const [dashboardData, setDashboardData] = useState("");
 
   const submitform = async (e: React.FormEvent<HTMLFormElement> | any) => {
     //prevent form page refresh
@@ -49,7 +47,6 @@ const JobPostInterface = ({ addjob }: { addjob: (job: IJob) => void }) => {
       })
       .catch(e);
 
-    //   navigate('/recruiter/home')
     setClosed(true);
     const error = e;
 

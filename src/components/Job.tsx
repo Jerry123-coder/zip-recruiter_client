@@ -61,7 +61,6 @@ const Job = ({job_id, job_title, organization, job_location, job_type, job_descr
        )
        .then(data =>{
          console.log(data)})
-        //  if(res.success) setApplied(true)
 
         toggleApplied()
         }

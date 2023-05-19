@@ -4,14 +4,12 @@ import { useNavigate } from "react-router-dom";
 import {MdEmail} from "react-icons/md"
 import {HiLockClosed} from "react-icons/hi"
 import { FaUserAlt } from "react-icons/fa"
-import { ImFolderUpload } from "react-icons/im"
 
 import Logo from '../../assets/logo.png';
 import WhiteLogo from '../../assets/white_logo.png'
 import Applicant from '../../assets/applicant.png'
 
 import formHandler from "../../services/formHandler.services";
-import ApplicationInterface from "../../components/ApplicationInterface";
 
 
 
@@ -19,11 +17,7 @@ const ApplicantSignup = () => {
 
   const navigate = useNavigate();
   const [error, setError] = useState<string>("");
-  const [dashboardData, setDashboardData] = useState("")
-  const [postDocument, setPostDocument] = useState(true)
-
- 
-   
+  
 
   const submitform = async (e: React.FormEvent<HTMLFormElement> | any) => {
     //prevent form page refresh
@@ -71,11 +65,7 @@ const ApplicantSignup = () => {
   return (
     <div className="signIn-page">
     <div className="imageSection">
-      
-    {/* <h1 className='signinMessage'>
-      WELCOME!
-    </h1>
-    <p></p> */}
+
     <img src={WhiteLogo} alt="logo" className="white-logo" />
     <img src={Applicant} alt="logo" className="recruiter" />
     </div>
@@ -117,31 +107,6 @@ const ApplicantSignup = () => {
               <input type="password" name="confirmPassword" required />
               <label> Confirm password</label>
             </div>
-
-            {/* <div className="documentUpload-Button" onClick={() => setPostDocument(!postDocument)}>
-              <span className="icon">
-                <ImFolderUpload /> Upload Documents
-              </span>
-            </div> */}
-
-            {/* <div>                  
-              {
-                  postDocument ? '' :(
-                      <div className='applyOverlay'>
-                  <div className="applicationForm">
-                  <img src={Logo} alt="logo" className="applicationForm-logo" />
-                      <div className="closeButton" onClick={() => setPostDocument(!postDocument)}>X</div>
-                      <div className="applicantButtons">
-                      <div className="uploadcv">upload cv</div>
-                      <div className="uploadCoverLetter">upload cover letter</div>
-                      </div>
-                  <div className="applicationNote">Kindly upload both documents to proceed</div>
-                  </div>
-                  </div>
-                  ) 
-              }
-           
-            </div> */}
 
             <span style={{color: "#080a7a"}}>{error}</span>
 

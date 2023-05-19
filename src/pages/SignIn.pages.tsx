@@ -61,10 +61,6 @@ const Signin = () => {
     <div className="signIn-page">
     <div className="imageSection">
       
-    {/* <h1 className='signinMessage'>
-      WELCOME!
-    </h1>
-    <p></p> */}
     <img src={WhiteLogo} alt="logo" className="white-logo" />
     <img src={RecruiterApplicant} alt="logo" className="recruiterApplicant" />
     </div>

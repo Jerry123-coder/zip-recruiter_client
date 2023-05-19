@@ -47,7 +47,6 @@ const Applicants = () => {
   const manageStatus = (id: number, status: string) => {
     const userData = getId("user");
     const tokens = getId("tokens");
-    // const id = userData.recruiter_id
     const updatedStatus = {
       application_id: id,
       status: status,
@@ -73,9 +72,8 @@ const Applicants = () => {
   };
 
   const getfile = async (filetype: string, email: string) => {
+    const tokens = getId("tokens");
 
-    const tokens = getId("tokens"); 
-    
     try {
       fetch(
         `http://localhost:9000/recruiters/get_file?email=${email}&filetype=${filetype}`,
@@ -97,11 +95,6 @@ const Applicants = () => {
   const deleteApplicant = (id: number) => {
     const userData = getId("user");
     const tokens = getId("tokens");
-    // const id = userData.recruiter_id
-    // const updatedStatus= {
-    //   application_id: id,
-    //   status: status
-    // }
 
     try {
       fetch(`http://localhost:9000/recruiters/delete_applicant/${id}`, {
@@ -128,24 +121,6 @@ const Applicants = () => {
         <RecruiterNavBar />
         <div className="pageCardsCaption">Quick access</div>
 
-        {/* <div className="optionsBar">
-          <div className="addNewUser">
-            +<FaUser />
-          </div>
-          <div className="filterUsers">
-            <FaFilter />
-          </div>
-          <div className="searchBar">
-            <FaSearch />
-            <input
-              className="searchBar-input"
-              type="text"
-              placeholder="search here"
-              // onChange={handleSearch}
-              // value={searchInput}
-            />
-          </div>
-        </div> */}
         <table>
           <thead>
             <tr>

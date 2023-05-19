@@ -47,7 +47,6 @@ const Job = ({
   const deleteJob = async () => {
     try {
       fetch(`http://localhost:9000/recruiters/delete_job/${job_id}`, {
-        // fetch ("http://localhost:9000/recruiters/delete_job",{
         method: "DELETE",
         headers: {
           "Content-type": "application/json",
@@ -64,17 +63,6 @@ const Job = ({
     }
   };
 
-  // const deleteJob = async (id: string) => {
-  //     const data = await fetch('http://localhost:9000/recruiters/post_job/' + id, {
-  //       method: 'DELETE',
-  //       headers: { 'Content-Type': 'application/json' },
-  //       // body: JSON.stringify({ title: 'mple' })
-  //     })
-  //       .then((res) => res.json())
-  //       .then(data => setTodos(todos.filter((todo) => {
-  //         return todo._id !== data.id;
-  //       })))
-  //       .catch((err) => console.log("Error " + err));
   return (
     <div className="jobContainer">
       <div className="recruiterLogo">

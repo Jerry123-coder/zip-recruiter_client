@@ -3,15 +3,12 @@ import React, { useState } from 'react';
 function UploadForm() {
   const [selectedFile, setSelectedFile] = useState(null);
 
-//   const handleFileChange = (e) => {
-//     setSelectedFile(e.target.files[0]);
-//   };
+
 
   const handleSubmit = async () => {
     // preventDefault();
 
     const formData = new FormData();
-    // formData.append('pdf', selectedFile);
 
     try {
       const response = await fetch('/upload', {
@@ -32,7 +29,6 @@ function UploadForm() {
 
   return (
     <form onSubmit={(e) => handleSubmit()} > 
-      {/* <input type="file" name="pdf" onChange={(e) => handleFileChange()} /> */}
       <button type="submit">Upload</button>
     </form>
   );

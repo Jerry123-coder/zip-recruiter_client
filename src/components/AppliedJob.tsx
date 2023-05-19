@@ -6,12 +6,7 @@ import { IApplicantJob, IAppliedJob, IJob } from '../interfaces';
 const AppliedJob = ({ job_data, recruiterRecruiterId, status}: IApplicantJob) => {
     const [apply, setApply] = useState(false);
     const [job, setJob ] = useState<IAppliedJob[]>([])
-  
-  
-    // const toggleApply = () => {
-    //     setApply(!apply)
-    // }
-  
+    
     return (
     <div>
         {   

@@ -129,18 +129,11 @@ const Fileupload = () => {
                 <button
                   type="submit"
                   className="applicantSubmitButton"
-                  //   onClick={() => setPostDocument(!postDocument)}
+
                 >
                   submit
                 </button>
               </form>
-              {/* <div className="applicantButtons">
-                <div className="uploadcv">upload cv</div>
-                <div className="uploadCoverLetter">upload cover letter</div>
-              </div>
-              <div className="applicationNote">
-                Kindly upload both documents to proceed
-              </div> */}
             </div>
           </div>
         )}

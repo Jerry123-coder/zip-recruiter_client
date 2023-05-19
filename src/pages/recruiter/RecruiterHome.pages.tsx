@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
-import ItemCard from "../../components/ItemCard";
-import Navbar from "../../components/Navbar";
 import RecruiterNavBar from "../../components/RecruiterNavBar";
 import SideNav from "../../components/SideNav";
 import { MdWork, MdHistory } from "react-icons/md";
 import { FaUsers } from "react-icons/fa";
-import Job from "../../components/Job";
 import JobPostInterface from "../../components/JobPostInterface";
 import { IJob } from "../../interfaces";
 import { getId } from "../../services/apiRequests";
@@ -79,8 +76,6 @@ const RecruiterHome = () => {
             </div>
             <div className="postNewJob-text">45 applications received</div>
           </div>
-
-          {/* <ItemCard itemIsUser={true}/> */}
         </div>
         <div className="jobsSection">
           {jobData.map((data, index) => (

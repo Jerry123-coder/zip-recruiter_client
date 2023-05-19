@@ -13,7 +13,6 @@ const JobEditInterface = ({job_id, job_title, organization, job_location, job_ty
         setClosed(true)
     }
 
-    const navigate = useNavigate();
   const [error, setError] = useState<string>("");
 
   const [jobTitle, setJobTitle] = useState(job_title)
@@ -26,7 +25,7 @@ const JobEditInterface = ({job_id, job_title, organization, job_location, job_ty
   
 
   const submitform = async (e: React.FormEvent<HTMLFormElement> | any) => {
-    //prevent form page refresh
+    //prevent from page refresh
     e.preventDefault();
     setError("")
 
@@ -63,7 +62,6 @@ const JobEditInterface = ({job_id, job_title, organization, job_location, job_ty
         console.log(data)})
       .catch(e)
 
-    //   navigate('/recruiter/home')
     setClosed(true)
       const error = e;
 

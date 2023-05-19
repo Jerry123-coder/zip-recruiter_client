@@ -1,15 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Navigate } from "react-router-dom";
-import Logout from "../../components/Logout";
 import Navbar from "../../components/Navbar";
 import ButtonLogo from "../../assets/recruiter_button_icon.png";
 
 import { FaSearch } from "react-icons/fa";
 import { MdOutlineLocationOn } from "react-icons/md";
 import Job from "../../components/Job";
-import ApplicationInterface from "../../components/ApplicationInterface";
-import jobs from "../../jobs.json";
-import ItemCard from "../../components/ItemCard";
 import { IJob } from "../../interfaces";
 import { getId, gettoken } from "../../services/apiRequests";
 import Fileupload from "../../components/Fileupload";
@@ -38,7 +33,6 @@ const ApplicantHome = () => {
     const formvalues = {
       job_title: formHandler(formelements, "jobSearch"),
       location: formHandler(formelements, "jobLocationSearch"),
-      // recruiterRecruiterId: userDetails.recruiter_id,
     };
 
     const job = formvalues.job_title;
@@ -78,8 +72,6 @@ const ApplicantHome = () => {
         .then((data) => {
           setJobData(data.jobs);
         });
-      // console.log({jobData})
-      // .catch(e)
     } catch (e) {
       console.log(e);
     }
@@ -98,7 +90,6 @@ const ApplicantHome = () => {
               <span className="icon">
                 <FaSearch />
               </span>
-              {/* <input type="text" name="jobSearch" value={jobQuery} onChange={(e)=> setJobQuery(e.target.value)} /> */}
               <input
                 type="text"
                 name="jobSearch"
@@ -140,7 +131,6 @@ const ApplicantHome = () => {
             pay,
             recruiterRecruiterId,
           }) => (
-            // jobs.map(() => (
             <Job
               job_id={job_id}
               job_title={job_title}
