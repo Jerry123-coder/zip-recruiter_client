@@ -31,6 +31,7 @@ const JobEditInterface = ({job_id, job_title, organization, job_location, job_ty
     setError("")
 
     const userDetails = gettoken('user')
+    const tokens = gettoken('tokens')
     console.log(userDetails)
 
    
@@ -53,6 +54,7 @@ const JobEditInterface = ({job_id, job_title, organization, job_location, job_ty
       method: "PUT",
       headers: {
         "Content-type": "application/json",
+        Authorization: `Basic ${tokens?.accessToken}`,
       },
       body: JSON.stringify(formvalues)
       })

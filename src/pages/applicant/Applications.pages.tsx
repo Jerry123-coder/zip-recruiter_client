@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { Navigate } from 'react-router-dom'
 import Logout from '../../components/Logout'
 import Navbar from '../../components/Navbar'
@@ -9,12 +9,40 @@ import { MdOutlineLocationOn } from 'react-icons/md'
 import Job from '../../components/Job'
 import jobs from '../../jobs.json'
 import AppliedJob from '../../components/AppliedJob'
-import { IJob } from '../../interfaces'
+import { IApplicantJob, IAppliedJob, IJob } from '../../interfaces'
+import { getId } from '../../services/apiRequests'
 
 const Applications = () => {
 
-  const [jobData, setJobData] = useState<IJob[]>([]);
+  const [jobData, setJobData] = useState<IApplicantJob[]>([]);
 
+  useEffect(() => {
+    const userData = getId('user')
+    const tokens = getId('tokens')
+    const id = userData.applicant_id
+    try {
+      fetch (`http://localhost:9000/applicants/applications/${id}`,{
+        method: "GET",
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Basic ${tokens?.accessToken}`,
+          
+        },
+        })
+          .then(res => res.json())
+          .then(data =>{
+            
+            setJobData(data.job_applications)
+          })
+          
+        // .catch(e)
+    } catch(e) {
+      console.log(e)
+    }
+   
+      
+  }, []);
+  console.log({jobData})
   return (
     <>
     <div className='pageContainer'>
@@ -46,17 +74,19 @@ const Applications = () => {
     </div>
     <div className="jobs">
         {
-          jobs.map(({job_id, job_title, organization, job_location, job_type, job_description, pay, recruiterRecruiterId, status}) => (
+          jobData.map(({ applicantApplicantId, job_title, applicant_name, applicant_email,  cover_letter, cv, recruiterRecruiterId , jobJobId, job_data, status}) => (
             < AppliedJob
-            job_id={job_id}
-            job_title={job_title}
-            organization={organization}
-            job_location={job_location}
-            job_type={job_type}
-            job_description={job_description}
-            pay={pay}
-            recruiterId={recruiterRecruiterId}
-            status={status}
+
+            applicantApplicantId= {applicantApplicantId}
+            job_title= {job_title}
+            applicant_name= {applicant_name}
+            applicant_email= {applicant_email}
+            cover_letter= {cover_letter}
+            cv= {cv}
+            job_data= {job_data}
+            status = {status}
+            jobJobId = {jobJobId}
+            recruiterRecruiterId={recruiterRecruiterId}
             />
           ))
         }

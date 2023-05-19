@@ -16,19 +16,32 @@ const Job = ({job_id, job_title, organization, job_location, job_type, job_descr
       setApplied(!applied)
   }
 
+  const job_data = {
+    job_id : job_id, 
+    job_title: job_title, 
+    organization: organization, 
+    job_location: job_location, 
+    job_type: job_type, 
+    job_description: job_description, 
+    pay: pay, 
+    recruiterRecruiterId: recruiterRecruiterId
+  }
+
   const sendApplication = () => {
      //prevent form page refresh
     //  preventDefault();
     //  setError("")
     const userDetails = gettoken("user");
+    const tokens = gettoken("tokens");
  
      const applicationData = {
       applicant_name: userDetails.name,
       applicant_email:userDetails.email,
       job_title: job_title,
-      cv: "cv",
-      cover_letter: "cl",
+      cv: `${userDetails.name}'s cv`,
+      cover_letter: `${userDetails.name}'s cover letter`,
       status: "pending",
+      job_data: job_data,
       applicantApplicantId: userDetails.applicant_id,
       jobJobId: job_id,
       recruiterRecruiterId: recruiterRecruiterId,
@@ -39,6 +52,8 @@ const Job = ({job_id, job_title, organization, job_location, job_type, job_descr
        method: "POST",
        headers: {
          "Content-type": "application/json",
+         Authorization: `Basic ${tokens?.accessToken}`,
+         
        },
        body: JSON.stringify(applicationData)
        })

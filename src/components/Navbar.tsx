@@ -5,15 +5,11 @@ import { useNavigate } from 'react-router-dom'
 import { FaUserAlt } from 'react-icons/fa'
 import Logo from '../assets/logo.png'
 import DropDownProfile from './DropDownProfile'
+import { getId } from '../services/apiRequests'
 
 
 const Navbar = () => {
-    // const [isActive,setIsActive] = useState(false)
-    // const navLinkStyles = ({ isActive }) => {
-    //     return {
-    //         fontWeight: isActive ? 'bold': normal
-    //     }
-    // }
+  
 
     const navigate = useNavigate();
     const [dropDownMenu, setDropDownMenu] = useState(false)
@@ -21,6 +17,7 @@ const Navbar = () => {
         setDropDownMenu(!dropDownMenu)
     }
 
+    const user= getId("user")
 
   return (
     <nav>
@@ -33,7 +30,7 @@ const Navbar = () => {
                  Applications 
             </li>
             <li className='nav-element' onClick={()=>navigate('/applicant/profile')}>
-                 Jeremiah
+                 {user.name}
             </li>       
             <div className="applicantProfile" onClick={dropDown}> <FaUserAlt/> 
                 {

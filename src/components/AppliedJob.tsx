@@ -1,16 +1,16 @@
 import React, {useState} from 'react'
 import ButtonIcon from '../assets/recruiter_button_icon.png'
 import { FaBuilding } from 'react-icons/fa';
-import { IAppliedJob, IJob } from '../interfaces';
+import { IApplicantJob, IAppliedJob, IJob } from '../interfaces';
 
-const AppliedJob = ({job_id, job_title, organization, job_location, job_type, job_description, pay, recruiterId, status}: IAppliedJob) => {
+const AppliedJob = ({ job_data, recruiterRecruiterId, status}: IApplicantJob) => {
     const [apply, setApply] = useState(false);
     const [job, setJob ] = useState<IAppliedJob[]>([])
   
   
-    const toggleApply = () => {
-        setApply(!apply)
-    }
+    // const toggleApply = () => {
+    //     setApply(!apply)
+    // }
   
     return (
     <div>
@@ -21,17 +21,17 @@ const AppliedJob = ({job_id, job_title, organization, job_location, job_type, jo
                 <FaBuilding />
                 </div>
                 <div className="jobData">
-                <div className="jobTitle">{job_title}</div>
-                <div className="organization">{organization}</div>
+                <div className="jobTitle">{job_data.job_title}</div>
+                <div className="organization">{job_data.organization}</div>
                 <div className="workConditions">
-                    <div className="locationType">{job_location}</div>
-                    <div className="workType">{job_type}</div>
+                    <div className="locationType">{job_data.job_location}</div>
+                    <div className="workType">{job_data.job_type}</div>
                 </div>
                 </div>
                 <div className="jobDescription">
-                <div className="salary">{pay}</div>
+                <div className="salary">{job_data.pay}</div>
                 <div className="description">
-                    {job_description}
+                    {job_data.job_description}
                 </div>
                 </div>
 
@@ -49,17 +49,17 @@ const AppliedJob = ({job_id, job_title, organization, job_location, job_type, jo
                 <FaBuilding />
                 </div>
                 <div className="jobData">
-                <div className="jobTitle">{job_title}</div>
-                <div className="organization">{organization}</div>
+                <div className="jobTitle">{job_data.job_title}</div>
+                <div className="organization">{job_data.organization}</div>
                 <div className="workConditions">
-                    <div className="rejectedLocationType">{job_location}</div>
-                    <div className="rejectedWorkType">{job_type}</div>
+                    <div className="rejectedLocationType">{job_data.job_location}</div>
+                    <div className="rejectedWorkType">{job_data.job_type}</div>
                 </div>
                 </div>
                 <div className="jobDescription">
-                <div className="salary">{pay}</div>
+                <div className="salary">{job_data.pay}</div>
                 <div className="description">
-                    {job_description}
+                    {job_data.job_description}
                 </div>
                 </div>
 
@@ -74,17 +74,17 @@ const AppliedJob = ({job_id, job_title, organization, job_location, job_type, jo
                         <FaBuilding />
                         </div>
                         <div className="jobData">
-                        <div className="jobTitle">{job_title}</div>
-                        <div className="organization">{organization}</div>
+                        <div className="jobTitle">{job_data.job_title}</div>
+                        <div className="organization">{job_data.organization}</div>
                         <div className="workConditions">
-                            <div className="locationType">{job_location}</div>
-                            <div className="workType">{job_type}</div>
+                            <div className="locationType">{job_data.job_location}</div>
+                            <div className="workType">{job_data.job_type}</div>
                         </div>
                         </div>
                         <div className="jobDescription">
-                        <div className="salary">{pay}</div>
+                        <div className="salary">{job_data.pay}</div>
                         <div className="description">
-                            {job_description}
+                            {job_data.job_description}
                         </div>
                         </div>
         

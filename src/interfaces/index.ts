@@ -11,6 +11,19 @@ export interface IJob {
     recruiterRecruiterId: number
 }
 
+export interface IApplicantJob{
+    applicantApplicantId: number,
+    job_title: string,
+    applicant_name: string,
+    applicant_email: string,
+    cover_letter:string,
+    cv: string,
+    job_data: IJob,
+    status: string
+    jobJobId: number,
+    recruiterRecruiterId: number,
+}
+
 export interface IAppliedJob {
     job_id: number,
     job_title: string,
