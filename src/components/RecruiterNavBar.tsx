@@ -19,6 +19,7 @@ const RecruiterNavBar = () => {
   return (
     <nav className='recruiterNavBar'>
     <img src={Logo} alt="logo" className="nav-logo" />
+    
     <ul>
         <li className='nav-element' onClick={()=>navigate('/recruiter/profile')}>
              {user.name}

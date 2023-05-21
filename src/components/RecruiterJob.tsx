@@ -5,6 +5,7 @@ import { FaBuilding } from "react-icons/fa";
 import ButtonIcon from "../assets/recruiter_button_icon.png";
 import { IJob } from "../interfaces";
 import JobEditInterface from "./JobEditInterface";
+import { getId } from "../services/apiRequests";
 
 const Job = ({
   props,
@@ -45,11 +46,13 @@ const Job = ({
   };
 
   const deleteJob = async () => {
+    const tokens = getId("tokens");
     try {
       fetch(`http://localhost:9000/recruiters/delete_job/${job_id}`, {
         method: "DELETE",
         headers: {
           "Content-type": "application/json",
+          Authorization: `Basic ${tokens?.accessToken}`,
         },
       })
         .then((res) => res.json())

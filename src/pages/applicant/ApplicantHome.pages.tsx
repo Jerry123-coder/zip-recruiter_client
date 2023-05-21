@@ -82,7 +82,8 @@ const ApplicantHome = () => {
       <Navbar />
       <div className="searchSection">
         <h1>Search for a job</h1>
-        <Fileupload />
+         <div><Fileupload /> 
+         </div>
 
         <form onSubmit={(e) => submitform(e)}>
           <div className="searchInputs">

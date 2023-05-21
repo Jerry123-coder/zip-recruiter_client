@@ -10,27 +10,8 @@ const ApplicantProfile = () => {
     <div className='pageContainer'>
     <Navbar />
     <div className='searchSection'>
-      <h1>Jobs Applied</h1>
-      <div className="searchInputs">
-          <div className="jobSearch">
-              <span className="icon">
-                <FaSearch />
-              </span>
-              <input type="text" name="jobSearch" required />
-              <label> search </label>
-          </div>
-          <div className="jobLocationSearch">
-              <span className="icon">
-                <MdOutlineLocationOn />
-              </span>
-              <input type="text" name="jobLocationSearch" required />
-              <label> location </label>
-          </div>
-          <div className="searchButton">
-          <img src={ButtonLogo} alt="logo" className="ButtonIcon" />
-          <div className="searchButtonText">Search</div>
-          </div>
-      </div>
+      <h1>My Profile</h1>
+     
       <div className="jobType">
         <ul>
             <li>Partime</li>

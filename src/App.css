@@ -415,17 +415,20 @@ li:active {
   }
 
 .documentUpload-Button {
+  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 95%;
   border-radius: 5px;
-  height:50px;
+  height:25px;
+  left: 15.8em;
+  top: 5.5em;
   /* font-size:xx-large; */
   font-weight: 700;
   background-color:#b1e522;
   padding-left: 20px;
-  margin: 15px 0 35px 0;
+  margin: 15px 0 20px 0;
   cursor: pointer;
   transition: ease-in-out 0.5s;
   box-shadow: 3px 3px 6px rgba(27, 27, 27, 0.7);
@@ -433,9 +436,9 @@ li:active {
 
 .documentUpload-Button:hover {
   font-weight: 700;
-  color:white;
-  background-color:var(--secondary);
-  box-shadow: 3px 3px 6px rgba(27, 27, 27, 0.7);
+  color:var(--tertiary);
+  background-color: var(--light-alt);
+  box-shadow: 3px 3px 6px rgba(17, 17, 17, 0.7);
 }
 
 .FormButton {
@@ -579,12 +582,14 @@ li:active {
   color: white;
   text-align: left;
   font-size: 3em;
-  margin-top: 80px;;
+  margin-top: 100px;
+  margin-bottom: 5px;;
 }
 
 .searchInputs {
   display: flex;
   align-items: center;
+  margin: auto;
   gap: 1em;
   width: 80vw;
 
@@ -701,6 +706,12 @@ li:active {
   margin-left: 15px;
 }
 
+button {
+  width: 120px;
+  height: 43px;
+  /* font-weight: 700; */
+}
+
 .searchButton {
   /* right: 20px;
   top: -20px; */
@@ -711,8 +722,7 @@ li:active {
   color: var(--tertiary);
   background-color: var(--primary);
   padding:5px;
-  width: 120px;
-  height: 30px;
+  
   border-radius: 50px;
   cursor:pointer;
   transition: ease-in 0.3s;
@@ -723,8 +733,6 @@ li:active {
   color: var(--tertiary);
   background-color: var(--light-alt);
   padding:5px;
-  width: 120px;
-  height: 30px;
   border-radius: 50px;
   box-shadow: 6px 6px 10px rgba(27, 27, 27, 0.5);
 }
@@ -744,6 +752,7 @@ li:active {
 
 .searchButtonText {
   margin: 5px 5px 5px 0;
+  font-weight: 700;
 }
 
 
@@ -1161,7 +1170,7 @@ li:active {
   font-weight: 700;
   font-size: 1.3em;
   border: solid 5px #ffffff9a;
-  background-color: #4087df;
+  background-color:#4087df;
   color: white;
   cursor:pointer;
   transition: ease-in-out 0.3s;
