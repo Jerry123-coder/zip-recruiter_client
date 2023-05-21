@@ -20,12 +20,12 @@ const RecruiterNavBar = () => {
     <nav className='recruiterNavBar'>
     <img src={Logo} alt="logo" className="nav-logo" />
     <ul>
-        <li className='nav-element' onClick={()=>navigate('/applicant/profile')}>
+        <li className='nav-element' onClick={()=>navigate('/recruiter/profile')}>
              {user.name}
         </li>       
         <div className="applicantProfile" onClick={dropDown}> <FaUserAlt/> 
             {
-                dropDownMenu ? <DropDownProfile/> : ''
+                // dropDownMenu ? <DropDownProfile/> : ''
             }
             
         </div> 

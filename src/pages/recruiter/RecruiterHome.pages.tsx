@@ -49,7 +49,7 @@ const RecruiterHome = () => {
       </div>
       <div className="mainSection">
         <RecruiterNavBar />
-        <div className="pageCardsCaption">Quick access</div>
+        <div className="pageCardsCaption"></div>
         <div className="pageCards">
           <div
             className="postNewJob"

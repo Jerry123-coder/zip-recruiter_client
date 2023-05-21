@@ -1364,11 +1364,18 @@ li:active {
 }
 
 /*////// PAGE CARDS SECTION //////*/
+.pageCardsCaption {
+  display: flex;
+  gap: 2em;
+  /* border-bottom: solid 1px var(--border); */
+  margin: 1em 5em;
+}
+
 .pageCards {
   display: flex;
   gap: 2em;
   border-bottom: solid 1px var(--border);
-  margin: 5em;
+  margin:  1em 5em;
 }
 
 .postNewJob {

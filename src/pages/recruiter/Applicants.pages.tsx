@@ -27,11 +27,13 @@ const Applicants = () => {
   const loaddata = async () => {
     try {
       const userData = getId("user");
+      const tokens = getId("tokens");
       const id = userData.recruiter_id;
       fetch(`http://localhost:9000/recruiters/applicants/${id}`, {
         method: "GET",
         headers: {
           "Content-type": "application/json",
+          Authorization: `Basic ${tokens?.accessToken}`,
         },
       })
         .then((res) => res.json())
@@ -119,7 +121,7 @@ const Applicants = () => {
       <SideNav />
       <div className="mainSection">
         <RecruiterNavBar />
-        <div className="pageCardsCaption">Quick access</div>
+        <div className="pageCardsCaption"></div>
 
         <table>
           <thead>

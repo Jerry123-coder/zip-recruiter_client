@@ -1,31 +1,28 @@
 import React, { createContext, useState } from "react";
-import '../../App.css';
+import "../../App.css";
 import { useNavigate } from "react-router-dom";
-import {MdEmail} from "react-icons/md"
-import {HiLockClosed} from "react-icons/hi"
-import { FaUserAlt } from "react-icons/fa"
+import { MdEmail } from "react-icons/md";
+import { HiLockClosed } from "react-icons/hi";
+import { FaUserAlt } from "react-icons/fa";
 
-import Logo from '../../assets/logo.png';
-import WhiteLogo from '../../assets/white_logo.png'
-import Applicant from '../../assets/applicant.png'
+import Logo from "../../assets/logo.png";
+import WhiteLogo from "../../assets/white_logo.png";
+import Applicant from "../../assets/applicant.png";
 
 import formHandler from "../../services/formHandler.services";
 
-
-
 const ApplicantSignup = () => {
-
   const navigate = useNavigate();
   const [error, setError] = useState<string>("");
-  
 
   const submitform = async (e: React.FormEvent<HTMLFormElement> | any) => {
     //prevent form page refresh
     e.preventDefault();
-    setError("")
+    setError("");
 
     const formelements = e.target.elements;
-      
+    
+
     const formvalues = {
       name: formHandler(formelements, "name"),
       email: formHandler(formelements, "email"),
@@ -33,50 +30,47 @@ const ApplicantSignup = () => {
       confirmPassword: formHandler(formelements, "confirmPassword"),
       cv: formHandler(formelements, "cv"),
       cover_letter: formHandler(formelements, "cover_letter"),
+    };
 
-    }
-
-    fetch ("http://localhost:9000/applicants/signup",{
+    fetch("http://localhost:9000/applicants/signup", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
       },
-      body: JSON.stringify(formvalues)
+      body: JSON.stringify(formvalues),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
       })
-      .then(res => res.json())
-      .then(data =>{
-        console.log(data)})
       .then()
-      .catch(e)
+      .catch(e);
 
-      navigate('/')
-      const error = e;
+    navigate("/");
+    const error = e;
 
+    console.log({ formvalues });
+  };
 
-    console.log({ formvalues })
-  }
-  
   const [closed, setClosed] = useState(false);
   const toggleClosed = () => {
-    setClosed(true)
-  }
-
+    setClosed(true);
+  };
 
   return (
     <div className="signIn-page">
-    <div className="imageSection">
+      <div className="imageSection">
+        <img src={WhiteLogo} alt="logo" className="white-logo" />
+        <img src={Applicant} alt="logo" className="recruiter" />
+      </div>
 
-    <img src={WhiteLogo} alt="logo" className="white-logo" />
-    <img src={Applicant} alt="logo" className="recruiter" />
-    </div>
-
-    <div className='formSection'>
-    <img src={Logo} alt="logo" className="login-logo" />
+      <div className="formSection">
+        <img src={Logo} alt="logo" className="login-logo" />
         <div className="formContainer">
-          <form onSubmit={(e) => submitform(e)} className='recruiterForm'>
-          <h1 className="applicantFormTitle">SIGN UP AS AN APPLICANT</h1>
+          <form onSubmit={(e) => submitform(e)} className="recruiterForm">
+            <h1 className="applicantFormTitle">SIGN UP AS AN APPLICANT</h1>
 
-          <div className="input-box">
+            <div className="input-box">
               <span className="icon">
                 <FaUserAlt />
               </span>
@@ -108,7 +102,7 @@ const ApplicantSignup = () => {
               <label> Confirm password</label>
             </div>
 
-            <span style={{color: "#080a7a"}}>{error}</span>
+            <span style={{ color: "#080a7a" }}>{error}</span>
 
             <button type="submit" className="FormButton">
               sign up
@@ -116,9 +110,8 @@ const ApplicantSignup = () => {
           </form>
         </div>
       </div>
-      </div>
-    
-  )
-}
+    </div>
+  );
+};
 
-export default ApplicantSignup
+export default ApplicantSignup;

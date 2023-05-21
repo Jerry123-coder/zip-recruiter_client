@@ -44,7 +44,7 @@ const Applications = () => {
     <Navbar />
     <div className='searchSection'>
       <h1>My Applications</h1>
-      <div className="searchInputs">
+      {/* <div className="searchInputs">
           <div className="jobSearch">
               <span className="icon">
                 <FaSearch />
@@ -64,7 +64,7 @@ const Applications = () => {
             <li>Full time</li>
             <li>Freelance</li>
           </ul>
-      </div>
+      </div> */}
       
     </div>
     <div className="jobs">

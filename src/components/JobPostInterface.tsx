@@ -20,6 +20,7 @@ const JobPostInterface = ({ addjob }: { addjob: (job: IJob) => void }) => {
     setError("");
 
     const userDetails = gettoken("user");
+    const tokens = gettoken("tokens");
     console.log(userDetails);
 
     const formelements = e.target.elements;
@@ -37,6 +38,7 @@ const JobPostInterface = ({ addjob }: { addjob: (job: IJob) => void }) => {
       method: "POST",
       headers: {
         "Content-type": "application/json",
+        Authorization: `Basic ${tokens?.accessToken}`,
       },
       body: JSON.stringify(formvalues),
     })
