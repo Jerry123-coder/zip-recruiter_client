@@ -53,6 +53,8 @@ const Fileupload = () => {
     } catch (error) {
       console.error("Error uploading file", error);
     }
+
+    setPostDocument(!postDocument)
   };
 
   return (
@@ -85,6 +87,11 @@ const Fileupload = () => {
               >
                 X
               </div>
+
+
+              
+
+
               <form onSubmit={(e) => handleSubmit(e)}>
                 <div className="applicantButtons">
                   <input
@@ -100,8 +107,8 @@ const Fileupload = () => {
                     htmlFor="cover"
                     className="uploadcv"
                     style={{
-                      backgroundColor: selectedFileCover ? "red" : "#b2e522",
-                      color: selectedFileCover ? "white" : "black",
+                      backgroundColor: selectedFileCover ? "#bbc79c" : "#b2e522",
+                      color: selectedFileCover ? "#5e5f5c" : "black",
                     }}
                   >
                     upload cover letter
@@ -119,8 +126,8 @@ const Fileupload = () => {
                     htmlFor="cv"
                     className="uploadcv"
                     style={{
-                      backgroundColor: selectedFileCV ? "red" : "#b2e522",
-                      color: selectedFileCV ? "white" : "black",
+                      backgroundColor: selectedFileCV ? "#bbc79c" : "#b2e522",
+                      color: selectedFileCV ? "#5e5f5c" : "black",
                     }}
                   >
                     upload cv
@@ -128,12 +135,22 @@ const Fileupload = () => {
                 </div>
                 <button
                   type="submit"
-                  className="applicantSubmitButton"
+                  className="cvSubmitButton"
 
                 >
                   submit
                 </button>
+
+                <button
+                  type="submit"
+                  className="applicantSubmitButton"
+
+                >
+                  submit
+                 </button>
               </form>
+
+              
             </div>
           </div>
         )}

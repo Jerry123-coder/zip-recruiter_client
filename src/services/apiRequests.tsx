@@ -23,12 +23,12 @@ const postData = async ({ baseUrl = base, url, body, get }: IRequest) => {
     } = {};
     config["method"] = get ? "GET" : "POST";
     let tokens: any = gettoken("tokens");
-    console.log({auth_tokens: tokens})
-  
-      config["headers"] = {
-        "Content-Type": "application/json",
-        Authorization: `Basic ${tokens?.accessToken}`,
-      };
+    console.log({ auth_tokens: tokens });
+
+    config["headers"] = {
+      "Content-Type": "application/json",
+      Authorization: `Basic ${tokens?.accessToken}`,
+    };
     console.log(body);
     if (body) config["body"] = JSON.stringify(body);
 
@@ -64,27 +64,26 @@ const postData = async ({ baseUrl = base, url, body, get }: IRequest) => {
   }
 };
 
+export const getId = (key: string) => {
+  try {
+    const userData = window.localStorage.getItem(key);
+    if (userData) return JSON.parse(userData);
 
-export const getId = (key:string) => {
-    try {
-        const userData = window.localStorage.getItem(key);
-        if (userData) return JSON.parse(userData);
-    
-        return {userData}
-    
-        // return null;
-      } catch (e) {
-        console.error(e);
-        return null;
-      }
-}
+    return { userData };
+
+    // return null;
+  } catch (e) {
+    console.error(e);
+    return null;
+  }
+};
 
 const gettoken = (key: string) => {
   try {
     const tokens = window.localStorage.getItem(key);
     if (tokens) return JSON.parse(tokens);
 
-    return null
+    return null;
 
     // return null;
   } catch (e) {
@@ -113,8 +112,5 @@ const cleartoken = async (key?: string) => {
     return false;
   }
 };
-
-
-
 
 export { postData, gettoken, settoken, cleartoken };

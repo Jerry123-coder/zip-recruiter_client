@@ -419,10 +419,10 @@ li:active {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 95%;
+  width: 150px;
   border-radius: 5px;
-  height:25px;
-  left: 15.8em;
+  height:45px;
+  left: 17.8em;
   top: 5.5em;
   /* font-size:xx-large; */
   font-weight: 700;
@@ -691,7 +691,7 @@ li:active {
 
 .jobLocationSearch input:focus,
 .jobLocationSearch input:valid {
-  border-color:#b2e522;
+  border-color:#5e5f5c;
 } 
 
 .jobLocationSearch input:hover + label,
@@ -1162,14 +1162,14 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  bottom: -15%;
-  right: 43%;
-  width: 100px;
-  height: 100px;
+  bottom: 43%;
+  left: 40%;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  font-weight: 700;
-  font-size: 1.3em;
-  border: solid 5px #ffffff9a;
+  font-weight: 300;
+  font-size: 1em;
+  border: solid 3px #ffffff9a;
   background-color:#4087df;
   color: white;
   cursor:pointer;
@@ -1183,6 +1183,26 @@ button {
   color: #ffffff;
   cursor:pointer;
   box-shadow: 6px 6px 12px rgba(27, 27, 27, 0.5);
+}
+
+.cvSubmitButton {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 43%;
+  right: 10%;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-weight: 300;
+  font-size: 1em;
+  border: solid 3px #ffffff9a;
+  background-color:#4087df;
+  color: white;
+  cursor:pointer;
+  transition: ease-in-out 0.3s;
+  box-shadow: 3px 3px 7px rgba(27, 27, 27, 0.5);
 }
 
 .uploadcv {

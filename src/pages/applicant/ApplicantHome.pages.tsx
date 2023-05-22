@@ -112,13 +112,13 @@ const ApplicantHome = () => {
             </button>
           </div>
         </form>
-        <div className="jobType">
+        {/* <div className="jobType">
           <ul>
             <li>Partime</li>
             <li>Full time</li>
             <li>Freelance</li>
           </ul>
-        </div>
+        </div> */}
       </div>
       <div className="jobs">
         {jobData?.map(

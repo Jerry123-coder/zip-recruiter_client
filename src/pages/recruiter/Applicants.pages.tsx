@@ -108,8 +108,8 @@ const Applicants = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          setJobData(data.job_applications);
-          // loaddata();
+          // setJobData(data.job_applications);
+          loaddata();
         });
     } catch (e) {
       console.log(e);

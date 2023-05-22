@@ -13,6 +13,7 @@ const Job = ({job_id, job_title, organization, job_location, job_type, job_descr
 
 
   const toggleApplied = () => {
+     
       setApplied(!applied)
   }
 
@@ -60,9 +61,8 @@ const Job = ({job_id, job_title, organization, job_location, job_type, job_descr
        .then(res => res.json()
        )
        .then(data =>{
-         console.log(data)})
-
-        toggleApplied()
+        alert(data.message)
+         data.applied ? setApplied(true) : setApplied(false)})
         }
          
 
